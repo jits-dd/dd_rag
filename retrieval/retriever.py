@@ -1,7 +1,7 @@
-from typing import List
 from llama_index.core.retrievers import BaseRetriever
-from llama_index.core.schema import QueryBundle, NodeWithScore
+from llama_index.core.schema import QueryBundle, NodeWithScore, TextNode
 from llama_index.core.postprocessor import LLMRerank
+from typing import List
 from config.settings import settings
 import logging
 
@@ -17,47 +17,57 @@ class AdvancedConversationRetriever(BaseRetriever):
         )
 
     def _retrieve(self, query_bundle: QueryBundle) -> List[NodeWithScore]:
+        """Enhanced retrieval with proper query handling"""
         try:
-            # Get initial dense retrieval results
-            query_str = str(query_bundle.query_str)
-            query_embedding = self.embed_model.get_text_embedding(query_str)
+            print(f"\nStarting retrieval for query: {query_bundle.query_str}")
+            query_embedding = self.embed_model.get_text_embedding(str(query_bundle.query_str))
+            print("Generated query embedding")
 
-            # Search with higher recall initially
-            dense_results = self.vector_store.query(
+            # Step 2: Query vector store
+            print("Querying Milvus vector store...")
+            results = self.vector_store.query(
                 query_embedding=query_embedding,
-                similarity_top_k=settings.RETRIEVAL_TOP_K * 2,
-                filters=None
+                similarity_top_k=settings.RETRIEVAL_TOP_K * 2
             )
+            print(f"Milvus returned {len(results)} results")
 
-            if not dense_results:
+            if not results:
                 return []
 
-            # Rerank with LLM for better precision
+            # Step 3: Convert to nodes
+            nodes = [
+                NodeWithScore(
+                    node=TextNode(
+                        text=result.text,
+                        metadata=result.metadata,
+                        embedding=result.embedding
+                    ),
+                    score=result.score
+                ) for result in results
+            ]
+
+            # Step 4: Rerank
+            print("Reranking results...")
             reranked_nodes = self.reranker.postprocess_nodes(
-                dense_results,
+                nodes,
                 query_bundle=query_bundle
             )
 
-            # Prioritize conversation nodes when present
-            final_nodes = self._prioritize_conversation_nodes(reranked_nodes)
-
-            return final_nodes[:settings.RETRIEVAL_TOP_K]
+            return reranked_nodes[:settings.RETRIEVAL_TOP_K]
 
         except Exception as e:
             self.logger.error(f"Retrieval failed: {e}")
             return []
 
-    def _prioritize_conversation_nodes(self, nodes: List[NodeWithScore]) -> List[NodeWithScore]:
-        """Reorder results to prioritize conversation nodes when relevant"""
-        conversation_nodes = [
-            n for n in nodes
-            if n.metadata.get("is_conversation", False)
-        ]
+    def _apply_business_rules(self, nodes: List[NodeWithScore]) -> List[NodeWithScore]:
+        """Apply business-specific prioritization rules"""
+        # Prioritize conversation nodes when present
+        conv_nodes = [n for n in nodes if n.metadata.get("is_conversation", False)]
 
-        # If we found conversation nodes and they're reasonably relevant (score > 0.5)
-        if conversation_nodes and conversation_nodes[0].score > 0.5:
-            return conversation_nodes + [
+        if conv_nodes and conv_nodes[0].score > 0.5:
+            return conv_nodes + [
                 n for n in nodes
                 if not n.metadata.get("is_conversation", False)
             ]
-        return nodes
+
+        return nodes[:settings.RETRIEVAL_TOP_K]

@@ -1,12 +1,10 @@
 from llama_index.core.query_engine import RetrieverQueryEngine
 from llama_index.core.response_synthesizers import get_response_synthesizer
-from llama_index.core import PromptTemplate
-from typing import List, Dict
-from llama_index.core.schema import NodeWithScore
+from llama_index.core import PromptTemplate, QueryBundle
+from typing import List
 from config.settings import settings
 import logging
 
-# More focused prompts
 CONVERSATION_PROMPT = PromptTemplate("""
 You are analyzing stored conversations. The user asked:
 {query_str}
@@ -23,7 +21,7 @@ Relevant conversation excerpts:
 Answer:
 """)
 
-STANDARD_PROMPT = PromptTemplate("""
+DOCUMENT_PROMPT = PromptTemplate("""
 User question:
 {query_str}
 
@@ -42,67 +40,55 @@ class AdvancedConversationEngine:
     def __init__(self, retriever):
         self.retriever = retriever
         self.logger = logging.getLogger(__name__)
-        self.response_synthesizer = get_response_synthesizer(
+        self.synthesizer = get_response_synthesizer(
             llm=settings.llm,
-            response_mode="compact",
-            text_qa_template=CONVERSATION_PROMPT
-        )
-        self.query_engine = RetrieverQueryEngine(
-            retriever=self.retriever,
-            response_synthesizer=self.response_synthesizer,
-            node_postprocessors=[]
+            response_mode="compact"
         )
 
-    def _select_prompt(self, nodes: List[NodeWithScore]) -> PromptTemplate:
+    def _select_prompt(self, nodes: List) -> PromptTemplate:
         """Select prompt based on content type"""
-        has_conversation = any(
-            n.metadata.get("is_conversation", False)
-            for n in nodes
-        )
-        return CONVERSATION_PROMPT if has_conversation else STANDARD_PROMPT
+        if any(n.metadata.get("is_conversation", False) for n in nodes):
+            return CONVERSATION_PROMPT
+        return DOCUMENT_PROMPT
 
-    def query(self, query_str: str) -> Dict[str, any]:
-        """Execute query with strict document enforcement"""
+    def query(self, query_str: str):
+        """Execute query with proper query bundle"""
         try:
-            # Retrieve nodes first
-            nodes = self.retriever.retrieve(query_str)
+            print(f"\nStarting query processing for: {query_str}")
+
+            # Step 1: Retrieve nodes
+            print("Retrieving nodes from vector store...")
+            nodes = self.retriever._retrieve(QueryBundle(query_str))
+            print(f"Found {len(nodes)} relevant nodes")
+
             if not nodes:
                 return {
-                    "answer": "No relevant information found in stored documents.",
+                    "answer": "No relevant information found in knowledge base",
                     "sources": []
                 }
 
-            # Update prompt based on content
-            prompt = self._select_prompt(nodes)
-            self.response_synthesizer.update_prompts(
-                {"text_qa_template": prompt}
+            # Step 2: Generate response
+            print("Generating response...")
+            query_engine = RetrieverQueryEngine(
+                retriever=self.retriever,
+                response_synthesizer=self.synthesizer
             )
-
-            # Execute query
-            response = self.query_engine.query(query_str)
-
-            # Format response with sources
-            sources = []
-            for i, node in enumerate(response.source_nodes, 1):
-                sources.append({
-                    "text": node.text[:300] + "..." if len(node.text) > 300 else node.text,
-                    "metadata": node.metadata,
-                    "score": node.score,
-                    "rank": i
-                })
-
+            response = query_engine.query(query_str)
+            # Step 3: Format response
             return {
                 "answer": str(response),
-                "sources": sources,
-                "metadata": {
-                    "retrieved_nodes": len(nodes),
-                    "prompt_used": prompt.template[:100] + "..." if len(prompt.template) > 100 else prompt.template
-                }
+                "sources": [
+                    {
+                        "text": node.text[:300],
+                        "score": node.score,
+                        "metadata": node.metadata
+                    } for node in response.source_nodes
+                ]
             }
 
         except Exception as e:
             self.logger.error(f"Query failed: {e}")
             return {
-                "answer": "Error processing your query. Please try again.",
+                "answer": "Error processing your query",
                 "error": str(e)
             }

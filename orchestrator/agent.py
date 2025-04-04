@@ -54,7 +54,7 @@ class AdvancedConversationAgent:
     def query(self, query_str: str):
         try:
             # First get direct retrieval results to verify content exists
-            nodes = self.query_engine.retriever.retrieve(query_str)
+            nodes = self.query_engine.retriever._retrieve(query_str)
             if not nodes:
                 return {
                     "answer": "No relevant conversations found in the knowledge base.",
