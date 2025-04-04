@@ -57,17 +57,16 @@ class AdvancedConversationEngine:
             print(f"\nStarting query processing for: {query_str}")
 
             # Step 1: Retrieve nodes
-            print("Retrieving nodes from vector store...")
-            nodes = self.retriever._retrieve(QueryBundle(query_str))
-            print(f"Found {len(nodes)} relevant nodes")
-
-            if not nodes:
-                return {
-                    "answer": "No relevant information found in knowledge base",
-                    "sources": []
-                }
-
-            # Step 2: Generate response
+            # print("Retrieving nodes from vector store...")
+            # nodes = self.retriever._retrieve(QueryBundle(query_str))
+            # print(f"Found {len(nodes)} relevant nodes")
+            #
+            # if not nodes:
+            #     return {
+            #         "answer": "No relevant information found in knowledge base",
+            #         "sources": []
+            #     }
+            #
             print("Generating response...")
             query_engine = RetrieverQueryEngine(
                 retriever=self.retriever,
