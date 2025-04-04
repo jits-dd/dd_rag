@@ -1,49 +1,84 @@
-from typing import List
-from llama_index.core.schema import BaseNode
+from typing import List, Dict, Any
+from llama_index.core.schema import BaseNode, TextNode
 from llama_index.core.embeddings import BaseEmbedding
+from llama_index.embeddings.huggingface import HuggingFaceEmbedding
 import hashlib
 import time
+import logging
+from config import settings
 
-class DocumentProcessor:
+class ConversationProcessor:
     def __init__(self, embed_model: BaseEmbedding):
-        self.embed_model = embed_model
+        self.primary_embed_model = embed_model
+        self.fallback_embed_model = HuggingFaceEmbedding(
+            model_name="BAAI/bge-small-en-v1.5"
+        )
+        self.logger = logging.getLogger(__name__)
 
+    def _enhance_metadata(self, node: BaseNode) -> Dict[str, Any]:
+        """Add conversation-specific metadata"""
+        metadata = node.metadata.copy() if hasattr(node, "metadata") else {}
+
+        # Extract conversation features
+        text = node.get_content()
+        metadata.update({
+            "processing_version": "3.0",
+            "chunk_hash": self._generate_content_hash(node),
+            "source_type": metadata.get("source", "unknown"),
+            "is_conversation": "conversation" in metadata.get("source", "").lower(),
+            "num_speakers": len(metadata.get("speakers", set())),
+            "word_count": len(text.split()),
+            "timestamp": int(time.time())
+        })
+
+        return metadata
+
+    # In processor.py - update the process_nodes method
     def process_nodes(self, nodes: List[BaseNode]) -> List[BaseNode]:
-        current_time = int(time.time())
-        """Add metadata, embeddings, and unique IDs"""
-        # Generate consistent IDs
-        for node in nodes:
-            node.id_ = self._generate_node_id(node)
+        """Process nodes with fallback embedding"""
+        processed_nodes = []
 
-            # Ensure metadata exists
-            if not hasattr(node, "metadata"):
-                node.metadata = {}
+        try:
+            # Process metadata and IDs
+            for node in nodes:
+                if not isinstance(node, TextNode):
+                    node = TextNode.from_base_node(node)
 
-            # Add processing metadata
-            node.metadata.update({
-                "processing_version": "2.0",
-                "chunk_hash": self._generate_content_hash(node),
-                "doc_type": node.metadata.get("doc_type", "unknown"),
-                "source_file": node.metadata.get("file_name", "unknown")
-            })
+                # Store doc_id in metadata
+                metadata = self._enhance_metadata(node)
+                metadata["doc_id"] = node.metadata.get("file_name", "")
+                node.metadata = metadata
+                node.id_ = self._generate_node_id(node)
+                processed_nodes.append(node)
 
-            # Add required Milvus fields
-            setattr(node, "document_id", node.metadata.get("doc_id", ""))
+            # Get embeddings in batch
+            texts = [node.get_content() for node in processed_nodes]
+            try:
+                embeddings = self.primary_embed_model.get_text_embedding_batch(texts)
+                self.logger.info("Used primary embedding model")
+            except Exception as e:
+                self.logger.warning(f"Primary embedding failed, using fallback: {e}")
+                embeddings = self.fallback_embed_model.get_text_embedding_batch(texts)
 
-        # Batch embed
-        texts = [node.get_content() for node in nodes]
-        embeddings = self.embed_model.get_text_embedding_batch(texts)
-        for node, embedding in zip(nodes, embeddings):
-            node.embedding = embedding
+            # Ensure embeddings are properly formatted
+            for node, embedding in zip(processed_nodes, embeddings):
+                if not isinstance(embedding, list):
+                    embedding = embedding.tolist() if hasattr(embedding, 'tolist') else list(embedding)
+                node.embedding = embedding
 
-        return nodes
+            self.logger.info(f"Processed {len(processed_nodes)} nodes")
+            return processed_nodes
+
+        except Exception as e:
+            self.logger.error(f"Error processing nodes: {e}")
+            raise
 
     def _generate_node_id(self, node: BaseNode) -> str:
-        """Generate SHA256 ID from content and metadata"""
+        """Generate consistent node ID"""
         content = node.get_content()
         metadata = str(node.metadata)
         return hashlib.sha256(f"{content}{metadata}".encode()).hexdigest()
 
     def _generate_content_hash(self, node: BaseNode) -> str:
-        """Generate separate content hash for change detection"""
+        """Generate content hash for change detection"""
         return hashlib.md5(node.get_content().encode()).hexdigest()

@@ -1,4 +1,9 @@
 pip install llama-index llama-index-vector-stores-milvus llama-index-embeddings-openai llama-index-llms-openai pymilvus
+pip install llama-index-embeddings-huggingface
+pip install llama_index.embeddings.openai
+pip install llama_index.embeddings.huggingface
+pip install --upgrade llama-index
+
 
 export OPENAI_API_KEY=your_openai_key
 export MILVUS_HOST=localhost
