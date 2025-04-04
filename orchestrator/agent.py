@@ -52,6 +52,7 @@ class AdvancedConversationAgent:
         )
 
     def query(self, query_str: str):
+        print("Inside agent query node")
         try:
             # First get direct retrieval results to verify content exists
             nodes = self.query_engine.retriever._retrieve(query_str)

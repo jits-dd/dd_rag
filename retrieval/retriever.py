@@ -4,6 +4,10 @@ from llama_index.core.postprocessor import LLMRerank
 from typing import List
 from config.settings import settings
 import logging
+from pymilvus import (
+    connections, utility, Collection,
+    FieldSchema, CollectionSchema, DataType
+)
 
 class AdvancedConversationRetriever(BaseRetriever):
     def __init__(self, vector_store, embed_model):
@@ -15,49 +19,62 @@ class AdvancedConversationRetriever(BaseRetriever):
             llm=settings.llm,
             top_n=settings.RERANK_TOP_K
         )
+        self.collection = Collection(self.vector_store.collection_name)
+        self.collection.load()
 
     def _retrieve(self, query_bundle: QueryBundle) -> List[NodeWithScore]:
-        """Enhanced retrieval with proper query handling"""
+        """Complete retrieval implementation with direct Milvus access"""
         try:
-            print(f"\nStarting retrieval for query: {query_bundle.query_str}")
-            query_embedding = self.embed_model.get_text_embedding(str(query_bundle.query_str))
-            print("Generated query embedding")
+            query_str = str(query_bundle.query_str)
+            print(f"\nStarting retrieval for: {query_str}")
 
-            # Step 2: Query vector store
-            print("Querying Milvus vector store...")
-            results = self.vector_store.query(
-                query_embedding=query_embedding,
-                similarity_top_k=settings.RETRIEVAL_TOP_K * 2
+            # 1. Generate embedding
+            query_embedding = self.embed_model.get_text_embedding(query_str)
+            print(f"Generated embedding (dim: {len(query_embedding)})")
+
+            # 2. Direct Milvus query
+            search_params = {
+                "metric_type": "IP",
+                "params": {"nprobe": 10}
+            }
+
+            print("Executing Milvus search...")
+            results = self.collection.search(
+                data=[query_embedding],
+                anns_field=self.vector_store.embedding_field,
+                param=search_params,
+                limit=settings.RETRIEVAL_TOP_K * 2,
+                output_fields=[self.vector_store.text_field, "metadata"]
             )
-            print(f"Milvus returned {len(results)} results")
 
-            if not results:
-                return []
+            print(f"Found {len(results[0])} raw results")
 
-            # Step 3: Convert to nodes
-            nodes = [
-                NodeWithScore(
+            # 3. Convert to nodes
+            nodes = []
+            for hit in results[0]:
+                nodes.append(NodeWithScore(
                     node=TextNode(
-                        text=result.text,
-                        metadata=result.metadata,
-                        embedding=result.embedding
+                        text=hit.entity.get(self.vector_store.text_field),
+                        metadata=hit.entity.get("metadata"),
+                        embedding=hit.entity.get(self.vector_store.embedding_field)
                     ),
-                    score=result.score
-                ) for result in results
-            ]
+                    score=hit.score
+                ))
 
-            # Step 4: Rerank
-            print("Reranking results...")
-            reranked_nodes = self.reranker.postprocess_nodes(
-                nodes,
-                query_bundle=query_bundle
-            )
+            # 4. Rerank if we have results
+            if nodes:
+                print(f"Reranking {len(nodes)} nodes...")
+                nodes = self.reranker.postprocess_nodes(
+                    nodes,
+                    query_bundle=query_bundle
+                )
 
-            return reranked_nodes[:settings.RETRIEVAL_TOP_K]
+            return nodes[:settings.RETRIEVAL_TOP_K]
 
         except Exception as e:
             self.logger.error(f"Retrieval failed: {e}")
             return []
+
 
     def _apply_business_rules(self, nodes: List[NodeWithScore]) -> List[NodeWithScore]:
         """Apply business-specific prioritization rules"""

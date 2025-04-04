@@ -97,10 +97,11 @@ class MilvusStorage:
             raise
 
     def get_vector_store(self) -> MilvusVectorStore:
-        """Get the initialized vector store"""
-        if not hasattr(self, 'vector_store'):
-            raise RuntimeError("Vector store not initialized")
-        return self.vector_store
+        return type('VectorStoreConfig', (), {
+            'collection_name': settings.MILVUS_COLLECTION,
+            'embedding_field': 'embedding',
+            'text_field': 'text'
+        })()
 
 
 
@@ -109,10 +110,13 @@ class CustomMilvusVectorStore(MilvusVectorStore):
             self,
             query_embedding: List[float],
             similarity_top_k: int,
-            query_str: Optional[str] = None,
             **kwargs
     ) -> List[dict]:
         """Properly formatted query method for Milvus"""
+        print("\nInside milvus_store query method")
+        print(f"Query embedding dim: {len(query_embedding)}")
+        print(f"Similarity top k: {similarity_top_k}")
+
         try:
             # Ensure collection is loaded
             col = Collection(self.collection_name)
@@ -134,7 +138,7 @@ class CustomMilvusVectorStore(MilvusVectorStore):
             )
 
             # Format results
-            return [
+            formatted_results = [
                 {
                     "text": hit.entity.get(self.text_field),
                     "metadata": hit.entity.get("metadata"),
@@ -143,6 +147,9 @@ class CustomMilvusVectorStore(MilvusVectorStore):
                 }
                 for hit in results[0]
             ]
+
+            print(f"Found {len(formatted_results)} results")
+            return formatted_results
 
         except Exception as e:
             logging.error(f"Milvus query failed: {e}")

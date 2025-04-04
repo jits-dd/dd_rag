@@ -29,6 +29,7 @@ def initialize_milvus(nodes):
     """Initialize Milvus with data loading"""
     try:
         storage = MilvusStorage()
+        print(f"Vector store type: {type(storage.get_vector_store())}")
         storage.store_nodes(nodes)
         logging.info(f"Stored {len(nodes)} nodes in Milvus")
         return storage
