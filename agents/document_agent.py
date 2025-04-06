@@ -1,6 +1,7 @@
 from llama_index.core.tools import QueryEngineTool
 from typing import Dict, Any
 import logging
+from config.settings import settings
 
 class DocumentAgent:
     def __init__(self, query_engine):
@@ -29,12 +30,39 @@ class DocumentAgent:
                 raise ValueError("Empty response from query engine")
 
             print("DocumentAgent received response from query engine")
+            # Extract answer and sources from response
+            context = response.get("answer", "No answer found")
+            sources = response.get("sources", [])
+
+            # Construct the new LLM prompt
+            prompt = f"""You are a helpful assistant answering questions strictly based on the provided context. 
+            Only answer if the context clearly answers the user's question. 
+            Do NOT make assumptions or hallucinate any facts. 
+            If the context is irrelevant, unclear, or incomplete, simply respond with: "No relevant answer found."
+            
+            Context:
+            {context}
+            
+            Question: {query}
+            
+            Answer:"""
+
+            # Generate refined response using LLM
+            llm_response_obj = settings.llm.complete(prompt)
+            llm_response = llm_response_obj.text.strip() if hasattr(llm_response_obj, "text") else str(llm_response_obj).strip()
+
             return {
                 "type": "document",
-                "answer": response.get("answer", "No answer found"),
-                "sources": response.get("sources", []),
+                "answer": llm_response if llm_response else "No relevant answer found.",
+                "sources": sources,  # Keeping original sources from retrieval
                 "agent": self.name
             }
+            # return {
+            #     "type": "document",
+            #     "answer": response.get("answer", "No answer found"),
+            #     "sources": response.get("sources", []),
+            #     "agent": self.name
+            # }
         except Exception as e:
             self.logger.error(f"Document analysis failed: {e}")
             return {

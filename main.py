@@ -102,8 +102,6 @@ def main():
                 response = orchestrator.orchestrate_task(query)
                 display_response(response)
 
-                print(f"Main method daily response {display_response(response)}")
-
 
 
             except KeyboardInterrupt:
