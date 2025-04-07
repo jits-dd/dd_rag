@@ -5,16 +5,26 @@ from agents.document_agent import DocumentAgent
 from orchestrator.orchestrator import AgentOrchestrator
 import argparse
 from storage.milvus_store import MilvusStorage
-from data_pipeline.loader import AdvancedConversationLoader
+from data_pipeline.loader import AdvancedDocumentLoader
 from data_pipeline.processor import ConversationProcessor
+
+# Configure logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    handlers=[
+        logging.FileHandler("document_processing.log"),
+        logging.StreamHandler()
+    ]
+)
 
 def initialize_data_pipeline():
     """Initialize data loading and processing pipeline"""
     try:
-        loader = AdvancedConversationLoader()
+        loader = AdvancedDocumentLoader()
         processor = ConversationProcessor(settings.embed_model)
 
-        nodes = loader.load_and_chunk()
+        nodes = loader.load_and_process()
         logging.info(f"Loaded {len(nodes)} document chunks")
 
         processed_nodes = processor.process_nodes(nodes)

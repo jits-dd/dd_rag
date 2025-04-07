@@ -1,71 +1,174 @@
-from llama_index.core import SimpleDirectoryReader
-from llama_index.core.node_parser import HierarchicalNodeParser
-from llama_index.core.schema import Document, TextNode
-from typing import List
-import logging
+import json
+import os
 import re
+import logging
+from typing import List, Optional, Dict, Any
+from datetime import datetime, timezone
+from pathlib import Path
+from config.settings import settings
 
-class AdvancedConversationLoader:
-    def __init__(self, input_dir: str = "data"):
+from llama_index.core import SimpleDirectoryReader
+from llama_index.core.node_parser import (
+    HierarchicalNodeParser,
+    SemanticSplitterNodeParser,
+    get_leaf_nodes
+)
+from llama_index.core.schema import Document, TextNode, BaseNode
+from llama_index.embeddings.openai import OpenAIEmbedding
+from openai import AsyncOpenAI
+
+
+class AdvancedDocumentLoader:
+    def __init__(
+            self,
+            input_dir: str = "data",
+            chunk_sizes: List[int] = [2048, 1024, 512],
+            embed_model: str = settings.EMBEDDING_MODEL,
+            parsing_mode: str = "hierarchical" # hierarchical or semantic
+    ):
         self.input_dir = input_dir
+        self.chunk_sizes = chunk_sizes
+        self.parsing_mode =  parsing_mode
         self.logger = logging.getLogger(__name__)
 
-    def _parse_conversation(self, text: str, file_name: str) -> List[Document]:
-        """Parse conversation text into structured dialog turns"""
-        dialog_pattern = re.compile(r"(?:\n|^)(\w+:\s*|\[.*?\]\s*)(.*?)(?=\n\w+:\s*|\n\[.*?\]\s*|\Z)", re.DOTALL)
-        matches = dialog_pattern.findall(text)
+        # Initialize embedding model
 
-        documents = []
-        current_chunk = []
+        self.embed_model = OpenAIEmbedding(model=embed_model)
 
-        for speaker, content in matches:
-            content = content.strip()
-            if not content:
-                continue
+        # Initialize OpenAI client for summarization
+        self.openai_client = AsyncOpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
-            current_chunk.append(f"{speaker.strip()}: {content}")
-
-            if len(current_chunk) >= settings.CONVERSATION_WINDOW:
-                documents.append(Document(
-                    text="\n".join(current_chunk),
-                    metadata={
-                        "source": "conversation",
-                        "is_conversation": True,
-                        "file_name": file_name
-                    }
-                ))
-                current_chunk = []
-
-        if current_chunk:
-            documents.append(Document(
-                text="\n".join(current_chunk),
-                metadata={
-                    "source": "conversation",
-                    "is_conversation": True,
-                    "file_name": file_name
-                }
-            ))
-
-        return documents
-
-    def load_and_chunk(self) -> List[TextNode]:
-        """Load and semantically chunk documents"""
+    def _load_raw_documents(self) -> List[Document]:
+        """Use default file readers to load documents from directory"""
         try:
             raw_docs = SimpleDirectoryReader(self.input_dir).load_data()
-            all_docs = []
-
-            for doc in raw_docs:
-                if "conversation" in doc.metadata.get("file_name", "").lower():
-                    all_docs.extend(self._parse_conversation(doc.text, doc.metadata.get("file_name", "")))
-                else:
-                    all_docs.append(doc)
-
-            node_parser = HierarchicalNodeParser.from_defaults(
-                chunk_sizes=[1024, 512, 256]
-            )
-            nodes = node_parser.get_nodes_from_documents(all_docs)
-            return nodes  # Return all nodes, not just leaf nodes
-
+            self.logger.info(f"Loaded {len(raw_docs)} documents from {self.input_dir}")
+            return raw_docs
         except Exception as e:
             self.logger.error(f"Error loading documents: {e}")
+            return []
+
+    def _parse_nodes(self, documents: List[Document]) -> List[BaseNode]:
+        """Parse documents into nodes using selected strategy"""
+        if self.parsing_mode == "semantic":
+            # Semantic parsing keeps related content together
+            parser = SemanticSplitterNodeParser(
+                buffer_size=1,  # How much to group by similarity
+                embed_model=self.embed_model,
+                breakpoint_percentile_threshold=95
+            )
+            base_nodes = parser.get_nodes_from_documents(documents)
+            return get_leaf_nodes(base_nodes)
+        else:
+            # Default to hierarchical parsing
+            parser = HierarchicalNodeParser.from_defaults(
+                chunk_sizes=self.chunk_sizes
+            )
+            return parser.get_nodes_from_documents(documents)
+
+    def _create_document(
+            self,
+            text: str,
+            file_name: str,
+            **extra_metadata
+    ) -> Document:
+        """Create a Document with standardized metadata"""
+        metadata = {
+            "source": "document",
+            "file_name": file_name,
+            "file_type": os.path.splitext(file_name)[1][1:],
+            "processing_time": datetime.now(timezone.utc).isoformat(),
+            **extra_metadata
+        }
+
+        return Document(text=text, metadata=metadata)
+
+    async def _generate_summary(self, text: str) -> Dict[str, str]:
+        """Generate title and summary for a document chunk"""
+        system_prompt = """You are an AI that extracts titles and summarizes content.
+        Return a JSON object with 'title' and 'summary' keys.
+        For the title: Create a concise, descriptive title for this content.
+        For the summary: Create a 1-3 sentence summary of the main points.
+        Be factual and maintain the original meaning."""
+
+        try:
+            response = await self.openai_client.chat.completions.create(
+                model="gpt-3.5-turbo",
+                messages=[
+                    {"role": "system", "content": system_prompt},
+                    {"role": "user", "content": f"Content:\n{text[:8000]}"}  # Increased context window
+                ],
+                response_format={"type": "json_object"},
+                temperature=0.2  # More deterministic output
+            )
+            return json.loads(response.choices[0].message.content)
+        except Exception as e:
+            self.logger.error(f"Error generating summary: {e}")
+            return {"title": "Untitled", "summary": "No summary available"}
+
+    async def _enhance_nodes(self, nodes: List[BaseNode]) -> List[TextNode]:
+        """Add embeddings and enhanced metadata to nodes"""
+        enhanced_nodes = []
+
+        for node in nodes:
+            try:
+                # Generate summary for the node
+                summary_data = await self._generate_summary(node.get_content())
+
+                # Create enhanced metadata
+                enhanced_metadata = {
+                    **node.metadata,
+                    "title": summary_data["title"],
+                    "summary": summary_data["summary"],
+                    "content_length": len(node.get_content()),
+                    "node_type": type(node).__name__,
+                    "enhanced_at": datetime.now(timezone.utc).isoformat(),
+                    "processing_strategy": self.parsing_mode
+                }
+
+                # Get embedding for the node
+                embedding = await self.embed_model.aget_text_embedding(node.get_content())
+
+                # Create enhanced TextNode
+                enhanced_node = TextNode(
+                    text=node.get_content(),
+                    embedding=embedding,
+                    metadata=enhanced_metadata,
+                    excluded_embed_metadata_keys=["file_name", "file_type"],  # Don't embed these
+                    excluded_llm_metadata_keys=["processing_time"]  # Don't send these to LLM
+                )
+
+                enhanced_nodes.append(enhanced_node)
+
+            except Exception as e:
+                self.logger.error(f"Error enhancing node: {e}")
+                continue
+
+        return enhanced_nodes
+
+    async def load_and_process(self) -> List[TextNode]:
+        """Load, parse, and enhance documents"""
+        try:
+            # Load raw documents
+            raw_docs = self._load_raw_documents()
+            all_docs = []
+
+            # Create standardized documents with metadata
+            for doc in raw_docs:
+                file_name = doc.metadata.get("file_name", "unknown")
+                all_docs.append(self._create_document(
+                    text=doc.text,
+                    file_name=file_name
+                ))
+
+            # Parse into nodes
+            nodes = self._parse_nodes(all_docs)
+
+            # Enhance nodes with embeddings and metadata
+            enhanced_nodes = await self._enhance_nodes(nodes)
+
+            return enhanced_nodes
+
+        except Exception as e:
+            self.logger.error(f"Error processing documents: {e}")
             raise

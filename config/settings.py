@@ -17,12 +17,13 @@ class Settings:
     MILVUS_USER = os.getenv("MILVUS_USER", "root")
     MILVUS_PASSWORD = os.getenv("MILVUS_PASSWORD", "Milvus")
     MILVUS_DATABASE = os.getenv("MILVUS_DATABASE", "default")
-    MILVUS_COLLECTION = "conversational_rag"
+    MILVUS_COLLECTION = "conversational_rag_test"
+    MILVUS_SECURE: bool = False
 
     # Data Processing
     CHUNK_SIZE = 1024
     CHUNK_OVERLAP = 200
-    CONVERSATION_WINDOW = 3
+    CONVERSATION_WINDOW = 4
 
     # Retrieval
     RETRIEVAL_TOP_K = 5
