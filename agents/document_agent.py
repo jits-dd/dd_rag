@@ -29,7 +29,7 @@ class DocumentAgent:
             if not response:
                 raise ValueError("Empty response from query engine")
 
-            print("DocumentAgent received response from query engine")
+            print(f"DocumentAgent received response from query engine - {response}")
             # Extract answer and sources from response
             context = response.get("answer", "No answer found")
             sources = response.get("sources", [])

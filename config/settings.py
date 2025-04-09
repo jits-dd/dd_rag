@@ -17,7 +17,7 @@ class Settings:
     MILVUS_USER = os.getenv("MILVUS_USER", "root")
     MILVUS_PASSWORD = os.getenv("MILVUS_PASSWORD", "Milvus")
     MILVUS_DATABASE = os.getenv("MILVUS_DATABASE", "default")
-    MILVUS_COLLECTION = "conversational_rag_test"
+    MILVUS_COLLECTION = "general_docs"
     MILVUS_SECURE: bool = False
 
     # Data Processing

@@ -55,7 +55,7 @@ class AdvancedConversationRetriever(BaseRetriever):
                 nodes.append(NodeWithScore(
                     node=TextNode(
                         text=hit.entity.get(self.vector_store.text_field),
-                        metadata=hit.entity.get("metadata"),
+                        metadata=hit.entity.get("metadata") or {},
                         embedding=hit.entity.get(self.vector_store.embedding_field)
                     ),
                     score=hit.score

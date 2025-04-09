@@ -194,8 +194,11 @@ class MilvusStorage:
             raise
 
     def get_vector_store(self) -> MilvusVectorStore:
-        """Get vector store with current configuration"""
-        return self.vector_store
+        return type('VectorStoreConfig', (), {
+            'collection_name': settings.MILVUS_COLLECTION,
+            'embedding_field': 'embedding',
+            'text_field': 'text'
+        })()
 
 class CustomMilvusVectorStore(MilvusVectorStore):
     def query(

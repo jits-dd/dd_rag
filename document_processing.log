@@ -110,3 +110,89 @@
 2025-04-07 17:06:48,767 - root - INFO - Inserted batch 1
 2025-04-07 17:06:51,825 - root - INFO - Stored 3 nodes successfully
 2025-04-07 17:06:51,826 - root - INFO - Pipeline completed successfully
+2025-04-09 06:25:23,421 - root - INFO - Connected to Milvus successfully
+2025-04-09 06:25:23,425 - root - INFO - Creating new collection: general_docs
+2025-04-09 06:25:26,960 - root - INFO - Starting document processing...
+2025-04-09 06:25:27,723 - data_pipeline.loader - INFO - Loaded 1 documents from data
+2025-04-09 06:25:31,620 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-04-09 06:25:34,715 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 06:25:35,638 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-04-09 06:25:37,788 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 06:25:38,464 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-04-09 06:25:40,244 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 06:25:41,167 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-04-09 06:25:41,389 - root - INFO - Processed 3 document chunks
+2025-04-09 06:25:41,390 - root - INFO - Storing documents in vector database...
+2025-04-09 06:25:41,435 - root - INFO - Inserted batch 1
+2025-04-09 06:25:44,519 - root - INFO - Stored 3 nodes successfully
+2025-04-09 06:25:44,519 - root - INFO - Pipeline completed successfully
+2025-04-09 06:33:33,595 - root - INFO - Connected to Milvus successfully
+2025-04-09 06:33:45,970 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 06:33:47,774 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-04-09 06:33:48,085 - retrieval.retriever - ERROR - Retrieval failed: 'MilvusVectorStore' object has no attribute 'text_field'
+2025-04-09 06:33:49,520 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 06:39:37,936 - root - INFO - Connected to Milvus successfully
+2025-04-09 06:39:50,073 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 06:39:51,506 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-04-09 06:39:51,777 - retrieval.retriever - ERROR - Retrieval failed: 1 validation error for TextNode
+metadata
+  Input should be a valid dictionary [type=dict_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.11/v/dict_type
+2025-04-09 06:39:52,764 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 06:48:33,984 - root - INFO - Connected to Milvus successfully
+2025-04-09 06:48:49,824 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 06:48:50,742 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-04-09 06:48:51,110 - retrieval.retriever - ERROR - Retrieval failed: 1 validation error for TextNode
+metadata
+  Input should be a valid dictionary [type=dict_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.11/v/dict_type
+2025-04-09 06:48:52,512 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 06:51:28,466 - root - INFO - Connected to Milvus successfully
+2025-04-09 06:51:40,699 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 06:51:41,579 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-04-09 06:51:43,148 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 06:51:44,511 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 06:51:45,881 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 07:02:39,321 - root - INFO - Connected to Milvus successfully
+2025-04-09 07:02:52,816 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 07:02:54,118 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-04-09 07:02:55,703 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 07:02:57,499 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 07:02:58,277 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 07:07:14,298 - root - INFO - Connected to Milvus successfully
+2025-04-09 07:07:28,087 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 07:07:28,960 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-04-09 07:07:31,112 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 07:07:32,482 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 07:07:33,302 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 07:20:53,584 - root - INFO - Connected to Milvus successfully
+2025-04-09 07:21:07,662 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 07:21:08,372 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-04-09 07:21:09,907 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 07:21:09,912 - orchestrator.query_engine - ERROR - Query failed: name 'response' is not defined
+2025-04-09 07:21:11,342 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 07:24:27,473 - root - INFO - Connected to Milvus successfully
+2025-04-09 07:25:46,475 - root - INFO - Connected to Milvus successfully
+2025-04-09 07:25:59,320 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 07:25:59,933 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-04-09 07:26:01,445 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 07:26:01,449 - orchestrator.query_engine - ERROR - Query failed: 'str' object has no attribute 'callback_manager'
+2025-04-09 07:26:03,015 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 07:29:53,918 - root - INFO - Connected to Milvus successfully
+2025-04-09 07:30:06,899 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 07:30:08,289 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-04-09 07:30:10,280 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 07:30:10,284 - orchestrator.query_engine - ERROR - Query failed: missing a required argument: 'query'
+2025-04-09 07:30:11,202 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 07:31:34,557 - root - INFO - Connected to Milvus successfully
+2025-04-09 07:31:49,227 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 07:31:50,736 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-04-09 07:31:53,193 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 07:31:53,212 - orchestrator.query_engine - ERROR - Query failed: missing a required argument: 'query'
+2025-04-09 07:31:54,626 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 07:34:10,976 - root - INFO - Connected to Milvus successfully
+2025-04-09 07:34:24,962 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 07:34:25,444 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-04-09 07:34:28,334 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 07:34:30,479 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-09 07:34:31,218 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"

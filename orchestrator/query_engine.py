@@ -1,4 +1,3 @@
-from llama_index.core.query_engine import RetrieverQueryEngine
 from llama_index.core.response_synthesizers import get_response_synthesizer
 from llama_index.core import PromptTemplate, QueryBundle
 from typing import List
@@ -45,11 +44,7 @@ class AdvancedConversationEngine:
             response_mode="compact"
         )
 
-    def _select_prompt(self, nodes: List) -> PromptTemplate:
-        """Select prompt based on content type"""
-        if any(n.metadata.get("is_conversation", False) for n in nodes):
-            return CONVERSATION_PROMPT
-        return DOCUMENT_PROMPT
+
 
     def query(self, query_str: str):
         """Execute query with proper query bundle"""
@@ -57,22 +52,20 @@ class AdvancedConversationEngine:
             print(f"\nStarting query processing for: {query_str}")
 
             # Step 1: Retrieve nodes
-            # print("Retrieving nodes from vector store...")
-            # nodes = self.retriever._retrieve(QueryBundle(query_str))
-            # print(f"Found {len(nodes)} relevant nodes")
-            #
-            # if not nodes:
-            #     return {
-            #         "answer": "No relevant information found in knowledge base",
-            #         "sources": []
-            #     }
-            #
+            print("Retrieving nodes from vector store...")
+            nodes = self.retriever._retrieve(QueryBundle(query_str))
+            print(f"Found {len(nodes)} relevant nodes")
+
+            if not nodes:
+                return {
+                    "answer": "No relevant information found in knowledge base",
+                    "sources": []
+                }
+
             print("Generating response...")
-            query_engine = RetrieverQueryEngine(
-                retriever=self.retriever,
-                response_synthesizer=self.synthesizer
-            )
-            response = query_engine.query(query_str)
+
+            response = self.synthesizer.synthesize(query=query_str, nodes=nodes)
+            print(f"QueryEngine query Response -{response}")
             # Step 3: Format response
             return {
                 "answer": str(response),

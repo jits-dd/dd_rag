@@ -88,8 +88,9 @@ def main():
 
     try:
         # Initialize components
-        nodes = initialize_data_pipeline()
-        storage = initialize_milvus(nodes)
+        # nodes = initialize_data_pipeline()
+        # storage = initialize_milvus(nodes)
+        storage = MilvusStorage()
         agents = initialize_agents(storage.get_vector_store(), settings.embed_model)
 
         print(f"Agents  - ----------{agents}")
