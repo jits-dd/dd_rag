@@ -26,7 +26,7 @@ class Settings:
     CONVERSATION_WINDOW = 4
 
     # Retrieval
-    RETRIEVAL_TOP_K = 5
+    RETRIEVAL_TOP_K = 2
     RERANK_TOP_K = 3
 
     @property

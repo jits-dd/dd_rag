@@ -31,38 +31,38 @@ class DocumentAgent:
 
             print(f"DocumentAgent received response from query engine - {response}")
             # Extract answer and sources from response
-            context = response.get("answer", "No answer found")
-            sources = response.get("sources", [])
+            # context = response.get("answer", "No answer found")
+            # sources = response.get("sources", [])
 
             # Construct the new LLM prompt
-            prompt = f"""You are a helpful assistant answering questions strictly based on the provided context. 
-            Only answer if the context clearly answers the user's question. 
-            Do NOT make assumptions or hallucinate any facts. 
-            If the context is irrelevant, unclear, or incomplete, simply respond with: "No relevant answer found."
-            
-            Context:
-            {context}
-            
-            Question: {query}
-            
-            Answer:"""
+            # prompt = f"""You are a helpful assistant answering questions strictly based on the provided context.
+            # Only answer if the context clearly answers the user's question.
+            # Do NOT make assumptions or hallucinate any facts.
+            # If the context is irrelevant, unclear, or incomplete, simply respond with: "No relevant answer found."
+            #
+            # Context:
+            # {context}
+            #
+            # Question: {query}
+            #
+            # Answer:"""
 
             # Generate refined response using LLM
-            llm_response_obj = settings.llm.complete(prompt)
-            llm_response = llm_response_obj.text.strip() if hasattr(llm_response_obj, "text") else str(llm_response_obj).strip()
+            # llm_response_obj = settings.llm.complete(prompt)
+            # llm_response = llm_response_obj.text.strip() if hasattr(llm_response_obj, "text") else str(llm_response_obj).strip()
 
-            return {
-                "type": "document",
-                "answer": llm_response if llm_response else "No relevant answer found.",
-                "sources": sources,  # Keeping original sources from retrieval
-                "agent": self.name
-            }
             # return {
             #     "type": "document",
-            #     "answer": response.get("answer", "No answer found"),
-            #     "sources": response.get("sources", []),
+            #     "answer": llm_response if llm_response else "No relevant answer found.",
+            #     "sources": sources,  # Keeping original sources from retrieval
             #     "agent": self.name
             # }
+            return {
+                "type": "document",
+                "answer": response.get("answer", "No answer found"),
+                "sources": response.get("sources", []),
+                "agent": self.name
+            }
         except Exception as e:
             self.logger.error(f"Document analysis failed: {e}")
             return {

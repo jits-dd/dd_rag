@@ -58,29 +58,60 @@ class AdvancedConversationEngine:
 
             if not nodes:
                 return {
-                    "answer": "No relevant information found in knowledge base",
-                    "sources": []
+                    "type": "document",
+                    "answer": "No relevant information found in knowledge base.",
+                    "sources": [],
+                    "agent": self.name
                 }
 
-            print("Generating response...")
+            # Step 2: Build synthetic response context from top nodes
+            top_node = nodes[0]
+            context = top_node.node.text[:3000]  # Truncate to avoid token overflow
+            sources = [
+                {
+                    "text": node.node.text[:300],  # Optional preview
+                    "score": node.score,
+                    "metadata": node.node.metadata
+                } for node in nodes
+            ]
 
-            response = self.synthesizer.synthesize(query=query_str, nodes=nodes)
-            print(f"QueryEngine query Response -{response}")
-            # Step 3: Format response
+            print(f"Context -{context}")
+            print(f"Query - {query_str}")
+
+            # Step 3: Build prompt
+            prompt = f"""You are a helpful assistant answering questions based on the provided context. 
+            Use the information in the context to guide your response as accurately as possible. 
+            If the context doesn't clearly contain the answer, it's okay to say: "No relevant answer found" or explain briefly why the information isn't available.
+            Avoid guessing or adding details that aren't supported by the context."
+            
+            Context:
+            {context}
+            
+            Question: {query_str}
+            
+            Answer:"""
+
+            print("Sending prompt to LLM...")
+            llm_response_obj = settings.llm.complete(prompt)
+            llm_response = (
+                llm_response_obj.text.strip()
+                if hasattr(llm_response_obj, "text")
+                else str(llm_response_obj).strip()
+            )
+
+            print(f"DocumentAgent received response from query engine - {llm_response}")
+
             return {
-                "answer": str(response),
-                "sources": [
-                    {
-                        "text": node.text[:300],
-                        "score": node.score,
-                        "metadata": node.metadata
-                    } for node in response.source_nodes
-                ]
+                "type": "document",
+                "answer": llm_response if llm_response else "No relevant answer found.",
+                "sources": sources,
+                # "agent": self.name
             }
 
         except Exception as e:
             self.logger.error(f"Query failed: {e}")
             return {
                 "answer": "Error processing your query",
-                "error": str(e)
+                "error": str(e),
+                # "agent": self.name
             }
