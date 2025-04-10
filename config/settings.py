@@ -11,6 +11,8 @@ class Settings:
     HF_EMBEDDING_MODEL = "BAAI/bge-small-en-v1.5"
     EMBEDDING_DIM = 3072  # For text-embedding-3-large
 
+    FIRECRAWL_API_KEY="fc-3b5c4a9ff07a41c8847132813349ab94"
+
     # Milvus Configuration
     MILVUS_HOST = os.getenv("MILVUS_HOST", "localhost")
     MILVUS_PORT = os.getenv("MILVUS_PORT", "19530")

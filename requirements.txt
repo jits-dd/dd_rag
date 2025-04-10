@@ -11,3 +11,6 @@ export MILVUS_HOST=localhost
 docker run -d --name milvus -p 19530:19530 milvusdb/milvus:v2.3.0
 
 python main.py
+
+pip install langchain langgraph playwright beautifulsoup4 requests
+playwright install
