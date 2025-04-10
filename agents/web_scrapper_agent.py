@@ -14,97 +14,24 @@ client = openai.OpenAI(api_key=openai.api_key)
 
 # Reference document text (extracted from your PDF)
 REFERENCE_DOCUMENT = """
-SECTOR CLASSIFICATION GUIDE:
-
 1. Agency
-- Key Factors: Client concentration, Retainer vs project revenue mix, Gross margin, Team scalability, IP/tech assets
-- Trends: Influencer platforms, content marketplaces, SMB marketing SaaS
-- Description: Media sector with M&A activity focused on digital-first brands, AI content automation, and immersive formats.
-
 2. Consumer (Apparel)
-- Key Factors: Repeat rate, AOV, Inventory turnover, Gross margin, Returns %
-- Trends: Fast fashion tech, athleisure D2C, sustainable fabrics
-- Description: Digitally native brands with loyal communities, focus on omni-channel and inventory efficiency.
-
 3. Consumer (Beauty & Personal Care)
-- Key Factors: Hero SKUs %, Repeat rate, D2C vs retail mix, CAC/LTV
-- Trends: Clean-label brands, AI personalization, Indian skin focus
-- Description: Growth in clean/natural products, social commerce scaling, men's grooming rise.
-
 4. Consumer (Food & Beverage)
-- Key Factors: Unit economics, Frequency of purchase, Distribution strength
-- Trends: Plant-based foods, clean snacks, regional flavor profiles
-- Description: Shift toward health/conscious choices, alternative proteins, functional beverages.
-
 5. Consumer (Footwear)
-- Key Factors: Return rate, ASP, Gross margin, Offline vs online %
-- Trends: Eco-friendly shoes, kids' ergonomic designs
-- Description: Brands with owned manufacturing, export-ready SKUs, comfort focus.
-
 6. Consumer (Health & Fitness)
-- Key Factors: Subscription revenue %, Engagement time, CAC to LTV
-- Trends: Home fitness tech, digital coaching, modern supplements
-- Description: Digital-first solutions, preventive care, wearable tech adoption.
-
 7. Consumer (Home & Household Supplies)
-- Key Factors: Basket size, Distribution network, Brand loyalty
-- Trends: Eco-conscious cleaning, refill models, home utility subscriptions
-- Description: Hygiene-focused products, premiumization, smart appliances.
-
 8. Consumer (Jewellery)
-- Key Factors: ASP, Inventory turnover, Trust/Brand signal
-- Trends: Lab-grown diamonds, silver fashion jewelry
-- Description: Lightweight everyday wear, digital adoption, personalization.
-
 9. Consumer (Personal Care)
-- Key Factors: Hero SKUs %, Repeat rate, Influencer ROI
-- Trends: Men's grooming, femtech, sexual wellness
-- Description: Natural/Ayurvedic products, tier 2/3 market growth.
-
 10. Fintech
-- Key Factors: Take rate, Loan book quality, Regulatory moat
-- Trends: Verticalized neobanks, BNPL, revenue-based financing
-- Description: UPI innovation, digital lending expansion, wealth/insurtech.
-
 11. Edtech
-- Key Factors: Course completion %, CAC vs ARPU
-- Trends: Job-linked upskilling, vernacular learning
-- Description: Hybrid learning models, professional upskilling focus.
-
 12. SaaS
-- Key Factors: ARR, NRR, CAC payback period
-- Trends: Vertical SaaS, low-code tools
-- Description: Industry-specific solutions, AI integration, global demand.
-
 13. Marketplaces
-- Key Factors: GMV, Take rate, Network effects
-- Trends: Social commerce, B2B agri/industrial
-- Description: Vertical platforms with fintech integrations.
-
 14. Hospitality (QSR & Restaurants)
-- Key Factors: SSSG, AOV, Table turnover
-- Trends: Cloud kitchens, restaurant tech
-- Description: Delivery-first models, regional cuisine focus.
-
 15. IT Services
-- Key Factors: Billing rates, Utilization %, Attrition
-- Trends: AI-powered MSP, cybersecurity
-- Description: Digital transformation, cloud migration focus.
-
 16. Gaming
-- Key Factors: DAU/MAU, Retention %, ARPDAU
-- Trends: Skill gaming, Web3 gaming
-- Description: Monetization efficiency focus, cross-platform potential.
-
 17. Healthcare & Medicine
-- Key Factors: Clinical validation, Recurring revenue %
-- Trends: Telehealth, elder care tech
-- Description: Digitization, preventive care, tier 2/3 expansion.
-
 18. AI / Deeptech / IoT
-- Key Factors: IP defensibility, Tech team quality
-- Trends: Space tech, enterprise NLP
-- Description: Commercialization focus, real-time data solutions.
 """
 
 def analyze_company_with_web_search(url):
@@ -118,7 +45,7 @@ def analyze_company_with_web_search(url):
             messages=[
                 {
                     "role": "system",
-                    "content": "You are a business analyst. Extract key information about the company from the web search results."
+                    "content": "You are a business analyst. Extract key information about the company from the web search results like - about and sector."
                 },
                 {
                     "role": "user",
@@ -129,13 +56,7 @@ def analyze_company_with_web_search(url):
 
         # Extract the content and citations
         content = response.choices[0].message.content
-        annotations = response.choices[0].message.annotations if hasattr(response.choices[0].message, 'annotations') else []
-
-        return {
-            "analysis": content,
-            "sources": [{"url": ann.url_citation.url, "title": ann.url_citation.title}
-                        for ann in annotations if ann.type == "url_citation"]
-        }
+        return content
 
     except Exception as e:
         print(f"Error in web search analysis: {e}")
@@ -150,21 +71,24 @@ def classify_sector(company_info):
                 {
                     "role": "system",
                     "content": f"""
-                    Classify the company into one of these sectors:
+                    You are a business analyst who specializes in classifying 
+                    the sector of a company basis the company data like - business model, about, operations etc.
+                    STRICT SECTOR CLASSIFICATION RULES:
+                    1. You MUST select only from these sectors:
                     {REFERENCE_DOCUMENT}
+                    2. Return EXACTLY ONE of these formats:
+                    - "Sector: [EXACT_SECTOR_NAME]" if matched
+                    - "No matching sector found" if no clear match
                     
-                    Rules:
-                    1. Choose the most specific matching sector
-                    2. Explain your reasoning
-                    3. If no clear match, return "Unknown"
+                    3. No explanations or additional text allowed
                     """
                 },
                 {
                     "role": "user",
-                    "content": f"Company information:\n\n{company_info}"
+                    "content": company_info
                 }
             ],
-            temperature=0.3
+            temperature=0.1
         )
 
         return response.choices[0].message.content
@@ -174,29 +98,23 @@ def classify_sector(company_info):
         return None
 
 def main():
-    company_url = "https://www.urbancompany.com"
+    company_url = "https://www.acko.com/"
 
     print(f"Analyzing company: {company_url}")
 
-    # Step 1: Extract company info using web search
-    print("\nExtracting company information via web search...")
-    result = analyze_company_with_web_search(company_url)
+    # Step 1: Get consie company info
+    print("\nExtracting company information --")
+    company_info = analyze_company_with_web_search(company_url)
 
-    if result and result["analysis"]:
-        print("\nExtracted Information:")
-        print(result["analysis"][:1000] + ("..." if len(result["analysis"]) > 1000 else ""))
+    if company_info:
+        print("\nCompany Description:")
+        print(company_info)
 
-        # Print sources if available
-        if result["sources"]:
-            print("\nSources:")
-            for source in result["sources"]:
-                print(f"- {source['title']}: {source['url']}")
-
-        # Step 2: Classify sector
+        # Step 2: Strict sector classification
         print("\nClassifying sector...")
-        sector = classify_sector(result["analysis"])
+        sector = classify_sector(company_info)
 
-        print("\nClassification Result:")
+        print("\nResult:")
         print(sector)
     else:
         print("Failed to analyze company")
