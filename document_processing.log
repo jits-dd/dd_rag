@@ -233,3 +233,56 @@ metadata
 2025-04-09 11:17:22,630 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
 2025-04-09 11:17:23,913 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
 2025-04-09 11:17:26,006 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 15:53:08,747 - root - INFO - Connected to Milvus successfully
+2025-05-02 15:53:08,774 - root - INFO - Starting document processing...
+2025-05-02 15:53:08,854 - data_pipeline.loader - INFO - Loaded 1 documents from data
+2025-05-02 15:53:10,261 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-05-02 15:53:13,359 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 15:53:14,385 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-05-02 15:53:16,637 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 15:53:17,467 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-05-02 15:53:19,903 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 15:53:20,410 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-05-02 15:53:22,177 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 15:53:22,769 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-05-02 15:53:25,507 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 15:53:26,204 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-05-02 15:53:26,480 - root - INFO - Processed 5 document chunks
+2025-05-02 15:53:26,480 - root - INFO - Storing documents in vector database...
+2025-05-02 15:53:26,542 - root - INFO - Inserted batch 1
+2025-05-02 15:53:29,095 - root - INFO - Stored 5 nodes successfully
+2025-05-02 15:53:29,096 - root - INFO - Pipeline completed successfully
+2025-05-02 15:55:44,908 - root - INFO - Connected to Milvus successfully
+2025-05-02 15:55:44,912 - root - INFO - Creating new collection: general_docs
+2025-05-02 15:55:48,221 - root - INFO - Starting document processing...
+2025-05-02 15:55:48,327 - data_pipeline.loader - INFO - Loaded 1 documents from data
+2025-05-02 15:55:49,935 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-05-02 15:55:53,078 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 15:55:53,953 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-05-02 15:55:55,366 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 15:55:56,053 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-05-02 15:55:57,909 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 15:55:59,326 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-05-02 15:56:01,354 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 15:56:02,325 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-05-02 15:56:04,210 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 15:56:04,705 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-05-02 15:56:04,983 - root - INFO - Processed 5 document chunks
+2025-05-02 15:56:04,983 - root - INFO - Storing documents in vector database...
+2025-05-02 15:56:05,032 - root - INFO - Inserted batch 1
+2025-05-02 15:56:08,096 - root - INFO - Stored 5 nodes successfully
+2025-05-02 15:56:08,097 - root - INFO - Pipeline completed successfully
+2025-05-02 15:56:40,387 - root - INFO - Connected to Milvus successfully
+2025-05-02 15:57:26,702 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 15:57:27,099 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-05-02 15:57:28,886 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 15:57:28,891 - orchestrator.query_engine - ERROR - Query failed: 'AdvancedConversationEngine' object has no attribute 'name'
+2025-05-02 15:59:29,272 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 15:59:29,705 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-05-02 15:59:32,652 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 15:59:32,654 - orchestrator.query_engine - ERROR - Query failed: 'AdvancedConversationEngine' object has no attribute 'name'
+2025-05-02 16:18:17,244 - root - INFO - Connected to Milvus successfully
+2025-05-02 16:19:17,278 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 16:19:17,947 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-05-02 16:19:19,883 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 16:19:24,808 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"

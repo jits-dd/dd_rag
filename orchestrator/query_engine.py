@@ -61,7 +61,7 @@ class AdvancedConversationEngine:
                     "type": "document",
                     "answer": "No relevant information found in knowledge base.",
                     "sources": [],
-                    "agent": self.name
+                    # "agent": self.name
                 }
 
             # Step 2: Build synthetic response context from top nodes
