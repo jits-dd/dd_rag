@@ -38,6 +38,46 @@ class AdvancedDocumentLoader:
         # Initialize OpenAI client for summarization
         self.openai_client = AsyncOpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
+        self.conversation_metadata_fields = [
+            "participants",
+            "discussion_topics",
+            "investment_stage",
+            "key_metrics"
+        ]
+
+    async def _extract_conversation_metadata(self, text: str, file_name: str) -> Dict[str, Any]:
+        """Extract conversation-specific metadata"""
+        system_prompt = """You are an AI that analyzes investment conversations between companies and investors.
+        Extract the following metadata:
+        - participants: List of participants and their roles (investor/company)
+        - discussion_topics: Key topics discussed (funding, valuation, terms, etc.)
+        - investment_stage: Current stage (seed, Series A, etc.) if mentioned
+        - key_metrics: Any important metrics mentioned (valuation, revenue, etc.)
+        
+        Return JSON with these fields. Be concise and accurate."""
+
+        try:
+            response = await self.openai_client.chat.completions.create(
+                model="gpt-3.5-turbo",
+                messages=[
+                    {"role": "system", "content": system_prompt},
+                    {"role": "user", "content": f"Conversation:\n{text[:8000]}"}
+                ],
+                response_format={"type": "json_object"},
+                temperature=0.1
+            )
+            metadata = json.loads(response.choices[0].message.content)
+
+            # Validate we got all required fields
+            for field in self.conversation_metadata_fields:
+                if field not in metadata:
+                    metadata[field] = None
+
+            return metadata
+        except Exception as e:
+            self.logger.error(f"Error extracting conversation metadata: {e}")
+            return {field: None for field in self.conversation_metadata_fields}
+
     def _load_raw_documents(self) -> List[Document]:
         """Use default file readers to load documents from directory"""
         try:
@@ -156,14 +196,18 @@ class AdvancedDocumentLoader:
             # Create standardized documents with metadata
             for doc in raw_docs:
                 file_name = doc.metadata.get("file_name", "unknown")
+                # Extract conversation-specific metadata
+                conversation_metadata = await self._extract_conversation_metadata(doc.text, file_name)
+
+                # Create document with all metadata
                 all_docs.append(self._create_document(
                     text=doc.text,
-                    file_name=file_name
+                    file_name=file_name,
+                    **conversation_metadata
                 ))
 
             # Parse into nodes
             nodes = self._parse_nodes(all_docs)
-
             # Enhance nodes with embeddings and metadata
             enhanced_nodes = await self._enhance_nodes(nodes)
 

@@ -110,3 +110,168 @@
 2025-04-07 17:06:48,767 - root - INFO - Inserted batch 1
 2025-04-07 17:06:51,825 - root - INFO - Stored 3 nodes successfully
 2025-04-07 17:06:51,826 - root - INFO - Pipeline completed successfully
+2025-06-03 16:56:56,212 - root - INFO - Connected to Milvus successfully
+2025-06-03 16:56:56,231 - root - INFO - Starting document processing...
+2025-06-03 16:56:56,258 - data_pipeline.loader - INFO - Loaded 1 documents from data
+2025-06-03 16:56:58,791 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-03 16:57:01,740 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-03 16:57:02,303 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-03 16:57:04,087 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-03 16:57:04,827 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-03 16:57:06,307 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-03 16:57:07,117 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-03 16:57:07,398 - root - INFO - Processed 3 document chunks
+2025-06-03 16:57:07,398 - root - INFO - Storing documents in vector database...
+2025-06-03 16:57:07,466 - root - INFO - Inserted batch 1
+2025-06-03 16:57:10,555 - root - INFO - Stored 3 nodes successfully
+2025-06-03 16:57:10,555 - root - INFO - Pipeline completed successfully
+2025-06-03 17:01:56,267 - root - INFO - Connected to Milvus successfully
+2025-06-03 17:01:56,270 - root - INFO - Creating new collection: general_docs
+2025-06-03 17:02:00,421 - root - INFO - Starting document processing...
+2025-06-03 17:02:00,454 - data_pipeline.loader - INFO - Loaded 1 documents from data
+2025-06-03 17:02:01,511 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-03 17:02:04,215 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-03 17:02:05,075 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-03 17:02:06,426 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-03 17:02:07,226 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-03 17:02:08,832 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-03 17:02:09,605 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-03 17:02:09,867 - root - INFO - Processed 3 document chunks
+2025-06-03 17:02:09,867 - root - INFO - Storing documents in vector database...
+2025-06-03 17:02:09,912 - root - INFO - Inserted batch 1
+2025-06-03 17:02:12,986 - root - INFO - Stored 3 nodes successfully
+2025-06-03 17:02:12,988 - root - INFO - Pipeline completed successfully
+2025-06-03 17:12:46,401 - root - INFO - Connected to Milvus successfully
+2025-06-03 17:12:46,423 - root - INFO - Starting document processing...
+2025-06-03 17:12:46,444 - data_pipeline.loader - INFO - Loaded 1 documents from data
+2025-06-03 17:12:47,549 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-03 17:12:50,743 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-03 17:12:51,721 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-03 17:12:53,978 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-03 17:12:54,608 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-03 17:12:55,908 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-03 17:12:56,625 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-03 17:12:56,880 - root - INFO - Processed 3 document chunks
+2025-06-03 17:12:56,881 - root - INFO - Storing documents in vector database...
+2025-06-03 17:12:56,925 - root - INFO - Inserted batch 1
+2025-06-03 17:12:59,998 - root - INFO - Stored 3 nodes successfully
+2025-06-03 17:12:59,998 - root - INFO - Pipeline completed successfully
+2025-06-03 17:17:15,067 - root - INFO - Connected to Milvus successfully
+2025-06-03 17:17:15,070 - root - INFO - Creating new collection: general_docs
+2025-06-03 17:17:19,190 - root - INFO - Starting document processing...
+2025-06-03 17:17:19,226 - data_pipeline.loader - INFO - Loaded 1 documents from data
+2025-06-03 17:17:20,421 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-03 17:17:23,113 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-03 17:17:23,801 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-03 17:17:25,825 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-03 17:17:26,438 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-03 17:17:28,198 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-03 17:17:29,194 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-03 17:17:29,199 - root - INFO - Processed 3 document chunks
+2025-06-03 17:17:29,199 - root - INFO - Storing documents in vector database...
+2025-06-03 17:17:29,246 - root - INFO - Inserted batch 1
+2025-06-03 17:17:31,805 - root - INFO - Stored 3 nodes successfully
+2025-06-03 17:17:31,806 - root - INFO - Pipeline completed successfully
+2025-06-03 17:18:00,675 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: BAAI/bge-small-en-v1.5
+2025-06-03 17:18:05,380 - sentence_transformers.SentenceTransformer - INFO - 2 prompts are loaded, with the keys: ['query', 'text']
+2025-06-03 17:18:05,382 - root - ERROR - Data pipeline initialization failed: object of type 'coroutine' has no len()
+2025-06-03 17:18:05,382 - root - CRITICAL - System initialization failed: object of type 'coroutine' has no len()
+2025-06-03 18:32:01,685 - root - INFO - Connected to Milvus successfully
+2025-06-03 18:32:01,688 - root - INFO - Creating new collection: general_docs
+2025-06-03 18:32:06,021 - __main__ - INFO - Starting document processing...
+2025-06-03 18:32:06,060 - data_pipeline.loader - INFO - Loaded 1 documents from data
+2025-06-03 18:32:08,479 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-03 18:32:10,087 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-03 18:32:14,774 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-03 18:32:15,449 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-03 18:32:17,674 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-03 18:32:18,336 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-03 18:32:19,979 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-03 18:32:20,744 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-03 18:32:21,011 - __main__ - INFO - Processed 3 document chunks
+2025-06-03 18:32:21,011 - __main__ - INFO - Storing documents in vector database...
+2025-06-03 18:32:21,037 - root - INFO - Inserted batch 1
+2025-06-03 18:32:23,571 - root - INFO - Stored 3 nodes successfully
+2025-06-03 18:32:23,571 - __main__ - INFO - Processed 1 unique files
+2025-06-04 12:32:29,509 - storage.milvus_store - INFO - Connected to Milvus successfully
+2025-06-04 12:32:30,086 - storage.milvus_store - INFO - Created new collection general_docs with full schema
+2025-06-04 12:32:30,086 - __main__ - INFO - Starting document processing...
+2025-06-04 12:32:30,118 - data_pipeline.loader - INFO - Loaded 1 documents from data
+2025-06-04 12:32:32,143 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-04 12:32:33,283 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-04 12:32:37,129 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-04 12:32:37,759 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-04 12:32:39,257 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-04 12:32:39,695 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-04 12:32:41,109 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-04 12:32:41,743 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-04 12:32:41,985 - __main__ - INFO - Processed 3 document chunks
+2025-06-04 12:32:41,985 - __main__ - INFO - Storing documents in vector database...
+2025-06-04 12:32:45,573 - storage.milvus_store - ERROR - Failed to store nodes: <MilvusException: (code=1100, message=varchar field 'investment_stage' is illegal, array type mismatch: expected=need string array, actual=got nil: invalid parameter)>
+Traceback (most recent call last):
+  File "/Users/itrs-2082/Desktop/DDGpt/dd_gpt/dd_rag/storage/milvus_store.py", line 150, in store_nodes
+    insert_result = col.insert(data)
+                    ^^^^^^^^^^^^^^^^
+  File "/Users/itrs-2082/miniconda3/lib/python3.11/site-packages/pymilvus/orm/collection.py", line 506, in insert
+    return conn.insert_rows(
+           ^^^^^^^^^^^^^^^^^
+  File "/Users/itrs-2082/miniconda3/lib/python3.11/site-packages/pymilvus/decorators.py", line 141, in handler
+    raise e from e
+  File "/Users/itrs-2082/miniconda3/lib/python3.11/site-packages/pymilvus/decorators.py", line 137, in handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/itrs-2082/miniconda3/lib/python3.11/site-packages/pymilvus/decorators.py", line 173, in handler
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/itrs-2082/miniconda3/lib/python3.11/site-packages/pymilvus/decorators.py", line 116, in handler
+    raise e from e
+  File "/Users/itrs-2082/miniconda3/lib/python3.11/site-packages/pymilvus/decorators.py", line 86, in handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/itrs-2082/miniconda3/lib/python3.11/site-packages/pymilvus/client/grpc_handler.py", line 554, in insert_rows
+    check_status(resp.status)
+  File "/Users/itrs-2082/miniconda3/lib/python3.11/site-packages/pymilvus/client/utils.py", line 64, in check_status
+    raise MilvusException(status.code, status.reason, status.error_code)
+pymilvus.exceptions.MilvusException: <MilvusException: (code=1100, message=varchar field 'investment_stage' is illegal, array type mismatch: expected=need string array, actual=got nil: invalid parameter)>
+2025-06-04 12:32:45,633 - __main__ - ERROR - Pipeline failed: <MilvusException: (code=1100, message=varchar field 'investment_stage' is illegal, array type mismatch: expected=need string array, actual=got nil: invalid parameter)>
+2025-06-04 12:39:45,553 - storage.milvus_store - INFO - Connected to Milvus successfully
+2025-06-04 12:39:46,140 - storage.milvus_store - INFO - Created new collection general_docs with full schema
+2025-06-04 12:39:46,141 - __main__ - INFO - Starting document processing...
+2025-06-04 12:39:46,169 - data_pipeline.loader - INFO - Loaded 1 documents from data
+2025-06-04 12:39:47,900 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-04 12:39:48,860 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-04 12:39:51,408 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-04 12:39:51,894 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-04 12:39:53,331 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-04 12:39:53,778 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-04 12:39:55,066 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-04 12:39:55,818 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-04 12:39:56,074 - __main__ - INFO - Processed 3 document chunks
+2025-06-04 12:39:56,074 - __main__ - INFO - Storing documents in vector database...
+2025-06-04 12:40:02,218 - storage.milvus_store - INFO - Inserted 3 entities
+2025-06-04 12:40:02,263 - storage.milvus_store - INFO - Verified metadata storage: {'source': 'document', 'file_name': 'boston.txt', 'file_type': 'txt', 'processing_time': '2025-06-04T07:09:47.908889+00:00', 'participants': [{'name': 'Investor', 'role': 'Investor'}, {'name': 'Fusion Food and Beverage Dynamics', 'role': 'Company'}], 'discussion_topics': ['Business model', 'Revenue streams', 'Challenges', 'Market size and growth potential', 'Competitors', 'Growth strategy', 'Product launches', 'Team and leadership', 'Biggest opportunity in the sector'], 'investment_stage': None, 'key_metrics': ['Global market size for Food and Beverage solutions: $120 billion', 'Market growth rate: 15% per year'], 'title': 'Fusion Food and Beverage Dynamics: Business Model and Growth Strategies', 'summary': 'Fusion Food and Beverage Dynamics is leveraging modern technologies and strategic partnerships to stay competitive in the evolving sector. Their hybrid business model combines subscription-based services with enterprise solutions, focusing on AI-driven analytics for operational efficiency. The company generates revenue from licensing, subscription fees, consulting services, and strategic collaborations, with a recent premium offering for large enterprises showing promising growth. Despite challenges in scaling operations and regulatory compliance, they are targeting a niche within the $120 billion global market with a 15% annual growth rate.', 'content_length': 1670, 'node_type': 'TextNode', 'enhanced_at': '2025-06-04T07:09:51.411374+00:00', 'processing_strategy': 'semantic', 'document_type': 'investment_conversation'}
+2025-06-04 12:40:02,273 - storage.milvus_store - INFO - Connected to Milvus successfully
+2025-06-04 12:40:02,290 - storage.milvus_store - INFO - Dropped existing collection general_docs
+2025-06-04 12:40:02,852 - storage.milvus_store - INFO - Created new collection general_docs with full schema
+2025-06-04 12:40:05,580 - storage.milvus_store - WARNING - No records found in collection
+2025-06-04 12:40:05,580 - __main__ - INFO - Processed 1 unique files
+2025-06-04 13:09:40,863 - storage.milvus_store - INFO - Connected to Milvus successfully
+2025-06-04 13:09:41,452 - storage.milvus_store - INFO - Created new collection general_docs with full schema
+2025-06-04 13:09:41,453 - __main__ - INFO - Starting document processing...
+2025-06-04 13:09:41,484 - data_pipeline.loader - INFO - Loaded 1 documents from data
+2025-06-04 13:09:43,229 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-04 13:09:44,721 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-04 13:09:47,823 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-04 13:09:48,361 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-04 13:09:49,674 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-04 13:09:50,300 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-04 13:09:51,503 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-04 13:09:52,455 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-04 13:09:52,651 - __main__ - INFO - Processed 3 document chunks
+2025-06-04 13:09:52,652 - __main__ - INFO - Storing documents in vector database...
+2025-06-04 13:09:59,028 - storage.milvus_store - INFO - Inserted 3 entities
+2025-06-04 13:09:59,054 - storage.milvus_store - INFO - Verified metadata storage: {'source': 'document', 'file_name': 'boston.txt', 'file_type': 'txt', 'processing_time': '2025-06-04T07:39:43.235607+00:00', 'participants': [{'name': 'Investor', 'role': 'Investor'}, {'name': 'Fusion Food and Beverage Dynamics', 'role': 'Company'}], 'discussion_topics': ['Business model', 'Revenue streams', 'Challenges', 'Market size and growth potential', 'Competitors', 'Growth strategy', 'Product launches', 'Team and leadership', 'Biggest opportunity in the sector'], 'investment_stage': None, 'key_metrics': ['Global market size for Food and Beverage solutions: $120 billion', 'Market growth rate: 15% per year'], 'title': 'Fusion Food and Beverage Dynamics: Navigating Trends and Growth Strategies', 'summary': 'Fusion Food and Beverage Dynamics is leveraging modern technologies and strategic partnerships to stay competitive in the evolving sector. Their hybrid business model combines subscription-based services with enterprise solutions, focusing on AI-driven analytics for operational efficiency. Revenue streams include licensing, subscriptions, consulting services, and strategic collaborations, with a recent premium offering for large enterprises showing promising growth. Challenges include scaling operations while maintaining personalized customer support and ensuring regulatory compliance. The company targets a niche within the $120 billion global market for Food and Beverage solutions, with a growth rate of 15% per year.', 'content_length': 1670, 'node_type': 'TextNode', 'enhanced_at': '2025-06-04T07:39:47.827578+00:00', 'processing_strategy': 'semantic', 'document_type': 'investment_conversation'}
+2025-06-04 13:09:59,079 - storage.milvus_store - INFO - Diagnostic results:
+2025-06-04 13:09:59,079 - storage.milvus_store - INFO - - File: boston.txt
+2025-06-04 13:09:59,079 - storage.milvus_store - INFO - - Metadata keys: ['source', 'file_name', 'file_type', 'processing_time', 'participants', 'discussion_topics', 'investment_stage', 'key_metrics', 'title', 'summary', 'content_length', 'node_type', 'enhanced_at', 'processing_strategy', 'document_type']
+2025-06-04 13:09:59,079 - __main__ - INFO - Processed 1 unique files
