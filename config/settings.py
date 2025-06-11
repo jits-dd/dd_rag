@@ -36,7 +36,7 @@ class Settings:
         try:
             return OpenAIEmbedding(
                 model=self.EMBEDDING_MODEL,
-                api_key=config['llm_model']['api_key'],
+                api_key=os.getenv("OPENAI_API_KEY"),
                 timeout=30,  # Increased timeout
                 max_retries=3
             )
@@ -52,7 +52,7 @@ class Settings:
             model="gpt-4o-2024-05-13",
             temperature=0.1,
             max_tokens=2000,
-            api_key=config['llm_model']['api_key']
+            api_key=os.getenv("OPENAI_API_KEY")
         )
 
 settings = Settings()
