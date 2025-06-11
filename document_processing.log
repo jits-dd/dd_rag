@@ -275,3 +275,194 @@ pymilvus.exceptions.MilvusException: <MilvusException: (code=1100, message=varch
 2025-06-04 13:09:59,079 - storage.milvus_store - INFO - - File: boston.txt
 2025-06-04 13:09:59,079 - storage.milvus_store - INFO - - Metadata keys: ['source', 'file_name', 'file_type', 'processing_time', 'participants', 'discussion_topics', 'investment_stage', 'key_metrics', 'title', 'summary', 'content_length', 'node_type', 'enhanced_at', 'processing_strategy', 'document_type']
 2025-06-04 13:09:59,079 - __main__ - INFO - Processed 1 unique files
+2025-06-11 11:06:23,926 - storage.milvus_store - INFO - Connected to Milvus successfully
+2025-06-11 11:06:23,932 - storage.milvus_store - INFO - Creating new collection: general_docs
+2025-06-11 11:06:24,572 - __main__ - INFO - Starting document processing...
+2025-06-11 11:06:25,315 - data_pipeline.loader - INFO - Loaded 1 documents from data
+2025-06-11 11:06:29,402 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-11 11:06:31,361 - openai._base_client - INFO - Retrying request to /embeddings in 0.438998 seconds
+2025-06-11 11:06:31,835 - openai._base_client - INFO - Retrying request to /embeddings in 0.830988 seconds
+2025-06-11 11:06:32,694 - openai._base_client - INFO - Retrying request to /embeddings in 1.884181 seconds
+2025-06-11 11:06:34,609 - openai._base_client - INFO - Retrying request to /embeddings in 3.898300 seconds
+2025-06-11 11:06:38,541 - openai._base_client - INFO - Retrying request to /embeddings in 6.708039 seconds
+2025-06-11 11:06:45,289 - openai._base_client - INFO - Retrying request to /embeddings in 6.062622 seconds
+2025-06-11 11:06:51,395 - openai._base_client - INFO - Retrying request to /embeddings in 7.028338 seconds
+2025-06-11 11:06:58,452 - openai._base_client - INFO - Retrying request to /embeddings in 6.803257 seconds
+2025-06-11 11:07:40,242 - storage.milvus_store - INFO - Connected to Milvus successfully
+2025-06-11 11:07:40,251 - storage.milvus_store - INFO - Dropped existing collection general_docs
+2025-06-11 11:07:40,252 - storage.milvus_store - INFO - Creating new collection: general_docs
+2025-06-11 11:07:40,812 - __main__ - INFO - Starting document processing...
+2025-06-11 11:07:40,924 - data_pipeline.loader - INFO - Loaded 1 documents from data
+2025-06-11 11:07:44,042 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-11 11:07:44,407 - openai._base_client - INFO - Retrying request to /embeddings in 0.395381 seconds
+2025-06-11 11:07:44,828 - openai._base_client - INFO - Retrying request to /embeddings in 0.800484 seconds
+2025-06-11 11:07:45,653 - openai._base_client - INFO - Retrying request to /embeddings in 1.698450 seconds
+2025-06-11 11:07:47,383 - openai._base_client - INFO - Retrying request to /embeddings in 3.167958 seconds
+2025-06-11 11:07:50,607 - openai._base_client - INFO - Retrying request to /embeddings in 6.606342 seconds
+2025-06-11 11:07:57,253 - openai._base_client - INFO - Retrying request to /embeddings in 7.789082 seconds
+2025-06-11 11:11:20,140 - storage.milvus_store - INFO - Connected to Milvus successfully
+2025-06-11 11:11:20,154 - storage.milvus_store - INFO - Dropped existing collection general_docs
+2025-06-11 11:11:20,166 - storage.milvus_store - INFO - Creating new collection: general_docs
+2025-06-11 11:11:20,731 - __main__ - INFO - Starting document processing...
+2025-06-11 11:11:20,755 - data_pipeline.loader - INFO - Loaded 1 documents from data
+2025-06-11 11:11:23,531 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-11 11:11:23,878 - openai._base_client - INFO - Retrying request to /embeddings in 0.400878 seconds
+2025-06-11 11:11:24,307 - openai._base_client - INFO - Retrying request to /embeddings in 0.910214 seconds
+2025-06-11 11:11:25,242 - openai._base_client - INFO - Retrying request to /embeddings in 1.629704 seconds
+2025-06-11 11:11:26,897 - openai._base_client - INFO - Retrying request to /embeddings in 3.045737 seconds
+2025-06-11 11:11:29,977 - openai._base_client - INFO - Retrying request to /embeddings in 6.271594 seconds
+2025-06-11 11:11:36,286 - openai._base_client - INFO - Retrying request to /embeddings in 6.179237 seconds
+2025-06-11 11:15:23,640 - storage.milvus_store - INFO - Connected to Milvus successfully
+2025-06-11 11:15:23,655 - storage.milvus_store - INFO - Dropped existing collection general_docs
+2025-06-11 11:15:23,659 - storage.milvus_store - INFO - Creating new collection: general_docs
+2025-06-11 11:15:24,207 - __main__ - INFO - Starting document processing...
+2025-06-11 11:15:24,230 - data_pipeline.loader - INFO - Loaded 1 documents from data
+2025-06-11 11:15:26,424 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-11 11:15:26,741 - openai._base_client - INFO - Retrying request to /embeddings in 0.486087 seconds
+2025-06-11 11:15:27,247 - openai._base_client - INFO - Retrying request to /embeddings in 0.785611 seconds
+2025-06-11 11:15:28,055 - openai._base_client - INFO - Retrying request to /embeddings in 1.609898 seconds
+2025-06-11 11:15:29,692 - openai._base_client - INFO - Retrying request to /embeddings in 3.213403 seconds
+2025-06-11 11:15:32,931 - openai._base_client - INFO - Retrying request to /embeddings in 6.221590 seconds
+2025-06-11 11:15:39,185 - openai._base_client - INFO - Retrying request to /embeddings in 6.768805 seconds
+2025-06-11 11:15:45,976 - openai._base_client - INFO - Retrying request to /embeddings in 7.015521 seconds
+2025-06-11 11:24:08,271 - storage.milvus_store - INFO - Connected to Milvus successfully
+2025-06-11 11:24:08,281 - storage.milvus_store - INFO - Dropped existing collection general_docs
+2025-06-11 11:24:08,282 - storage.milvus_store - INFO - Creating new collection: general_docs
+2025-06-11 11:24:08,831 - __main__ - INFO - Starting document processing...
+2025-06-11 11:24:08,851 - data_pipeline.loader - INFO - Loaded 1 documents from data
+2025-06-11 11:24:11,091 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-11 11:24:11,392 - openai._base_client - INFO - Retrying request to /embeddings in 0.488632 seconds
+2025-06-11 11:24:11,915 - openai._base_client - INFO - Retrying request to /embeddings in 0.914113 seconds
+2025-06-11 11:24:12,872 - openai._base_client - INFO - Retrying request to /embeddings in 1.961745 seconds
+2025-06-11 11:24:14,871 - openai._base_client - INFO - Retrying request to /embeddings in 3.686338 seconds
+2025-06-11 11:24:18,593 - openai._base_client - INFO - Retrying request to /embeddings in 7.808968 seconds
+2025-06-11 11:28:05,056 - storage.milvus_store - INFO - Connected to Milvus successfully
+2025-06-11 11:28:05,062 - storage.milvus_store - INFO - Dropped existing collection general_docs
+2025-06-11 11:28:05,064 - storage.milvus_store - INFO - Creating new collection: general_docs
+2025-06-11 11:28:05,610 - __main__ - INFO - Starting document processing...
+2025-06-11 11:28:05,631 - data_pipeline.loader - INFO - Loaded 1 documents from data
+2025-06-11 11:28:08,002 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-11 11:28:08,290 - openai._base_client - INFO - Retrying request to /embeddings in 0.437098 seconds
+2025-06-11 11:28:08,757 - openai._base_client - INFO - Retrying request to /embeddings in 0.959118 seconds
+2025-06-11 11:28:09,741 - openai._base_client - INFO - Retrying request to /embeddings in 1.902050 seconds
+2025-06-11 11:37:06,502 - storage.milvus_store - INFO - Connected to Milvus successfully
+2025-06-11 11:37:06,512 - storage.milvus_store - INFO - Dropped existing collection general_docs
+2025-06-11 11:37:06,514 - storage.milvus_store - INFO - Creating new collection: general_docs
+2025-06-11 11:37:07,059 - __main__ - INFO - Starting document processing...
+2025-06-11 11:37:07,080 - data_pipeline.loader - INFO - Loaded 1 documents from data
+2025-06-11 11:37:09,373 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-11 11:37:09,659 - openai._base_client - INFO - Retrying request to /embeddings in 0.434475 seconds
+2025-06-11 11:37:10,124 - openai._base_client - INFO - Retrying request to /embeddings in 0.974203 seconds
+2025-06-11 11:37:11,126 - openai._base_client - INFO - Retrying request to /embeddings in 1.934817 seconds
+2025-06-11 11:37:13,088 - openai._base_client - INFO - Retrying request to /embeddings in 3.469530 seconds
+2025-06-11 11:37:16,581 - openai._base_client - INFO - Retrying request to /embeddings in 6.196991 seconds
+2025-06-11 11:37:22,821 - openai._base_client - INFO - Retrying request to /embeddings in 6.278333 seconds
+2025-06-11 11:37:29,141 - openai._base_client - INFO - Retrying request to /embeddings in 6.152030 seconds
+2025-06-11 11:37:35,335 - openai._base_client - INFO - Retrying request to /embeddings in 7.640384 seconds
+2025-06-11 11:43:48,439 - storage.milvus_store - INFO - Connected to Milvus successfully
+2025-06-11 11:43:48,448 - storage.milvus_store - INFO - Dropped existing collection general_docs
+2025-06-11 11:43:48,449 - storage.milvus_store - INFO - Creating new collection: general_docs
+2025-06-11 11:43:48,998 - __main__ - INFO - Starting document processing...
+2025-06-11 11:43:49,020 - data_pipeline.loader - INFO - Loaded 1 documents from data
+2025-06-11 11:43:51,370 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-11 11:43:51,675 - openai._base_client - INFO - Retrying request to /embeddings in 0.376438 seconds
+2025-06-11 11:43:52,077 - openai._base_client - INFO - Retrying request to /embeddings in 0.959521 seconds
+2025-06-11 11:43:53,064 - openai._base_client - INFO - Retrying request to /embeddings in 1.596772 seconds
+2025-06-11 11:43:54,692 - openai._base_client - INFO - Retrying request to /embeddings in 3.075870 seconds
+2025-06-11 11:43:57,789 - openai._base_client - INFO - Retrying request to /embeddings in 6.665571 seconds
+2025-06-11 11:49:28,906 - storage.milvus_store - INFO - Connected to Milvus successfully
+2025-06-11 11:49:28,914 - storage.milvus_store - INFO - Dropped existing collection general_docs
+2025-06-11 11:49:28,916 - storage.milvus_store - INFO - Creating new collection: general_docs
+2025-06-11 11:49:29,471 - __main__ - INFO - Starting document processing...
+2025-06-11 11:49:29,494 - data_pipeline.loader - INFO - Loaded 1 documents from data
+2025-06-11 11:49:31,780 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-11 11:49:32,067 - openai._base_client - INFO - Retrying request to /embeddings in 0.470871 seconds
+2025-06-11 11:49:32,568 - openai._base_client - INFO - Retrying request to /embeddings in 0.903576 seconds
+2025-06-11 11:49:33,496 - openai._base_client - INFO - Retrying request to /embeddings in 1.686424 seconds
+2025-06-11 12:03:26,467 - storage.milvus_store - INFO - Connected to Milvus successfully
+2025-06-11 12:03:26,481 - storage.milvus_store - INFO - Dropped existing collection general_docs
+2025-06-11 12:03:26,482 - storage.milvus_store - INFO - Creating new collection: general_docs
+2025-06-11 12:03:27,032 - __main__ - INFO - Starting document processing...
+2025-06-11 12:03:27,052 - data_pipeline.loader - INFO - Loaded 1 documents from data
+2025-06-11 12:03:29,394 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-11 12:03:29,700 - openai._base_client - INFO - Retrying request to /embeddings in 0.473381 seconds
+2025-06-11 12:03:30,202 - openai._base_client - INFO - Retrying request to /embeddings in 0.756281 seconds
+2025-06-11 12:03:30,985 - openai._base_client - INFO - Retrying request to /embeddings in 1.503635 seconds
+2025-06-11 12:03:32,513 - openai._base_client - INFO - Retrying request to /embeddings in 3.610240 seconds
+2025-06-11 12:03:36,155 - openai._base_client - INFO - Retrying request to /embeddings in 6.356875 seconds
+2025-06-11 12:10:56,958 - storage.milvus_store - INFO - Connected to Milvus successfully
+2025-06-11 12:10:56,965 - storage.milvus_store - INFO - Dropped existing collection general_docs
+2025-06-11 12:10:56,968 - storage.milvus_store - INFO - Creating new collection: general_docs
+2025-06-11 12:10:57,518 - __main__ - INFO - Starting document processing...
+2025-06-11 12:10:57,538 - data_pipeline.loader - INFO - Loaded 1 documents from data
+2025-06-11 12:11:00,975 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-11 12:11:01,277 - openai._base_client - INFO - Retrying request to /embeddings in 0.437698 seconds
+2025-06-11 12:11:01,743 - openai._base_client - INFO - Retrying request to /embeddings in 0.872184 seconds
+2025-06-11 12:11:02,639 - openai._base_client - INFO - Retrying request to /embeddings in 1.813046 seconds
+2025-06-11 12:11:04,480 - openai._base_client - INFO - Retrying request to /embeddings in 3.231798 seconds
+2025-06-11 12:11:07,841 - openai._base_client - INFO - Retrying request to /embeddings in 6.238951 seconds
+2025-06-11 12:11:14,125 - openai._base_client - INFO - Retrying request to /embeddings in 7.278118 seconds
+2025-06-11 12:11:21,431 - openai._base_client - INFO - Retrying request to /embeddings in 7.386069 seconds
+2025-06-11 12:11:28,852 - openai._base_client - INFO - Retrying request to /embeddings in 7.080426 seconds
+2025-06-11 12:11:35,962 - openai._base_client - INFO - Retrying request to /embeddings in 7.144438 seconds
+2025-06-11 12:11:43,143 - openai._base_client - INFO - Retrying request to /embeddings in 6.868559 seconds
+2025-06-11 12:11:50,045 - llama_index.embeddings.openai.utils - WARNING - Retrying llama_index.embeddings.openai.base.OpenAIEmbedding._get_text_embeddings.<locals>._retryable_get_embeddings in 1.0 seconds as it raised APIConnectionError: Connection error..
+2025-06-11 12:11:51,081 - openai._base_client - INFO - Retrying request to /embeddings in 0.406435 seconds
+2025-06-11 12:11:51,511 - openai._base_client - INFO - Retrying request to /embeddings in 0.805614 seconds
+2025-06-11 12:11:52,342 - openai._base_client - INFO - Retrying request to /embeddings in 1.951651 seconds
+2025-06-11 12:11:54,325 - openai._base_client - INFO - Retrying request to /embeddings in 3.999736 seconds
+2025-06-11 12:11:58,346 - openai._base_client - INFO - Retrying request to /embeddings in 7.214025 seconds
+2025-06-11 12:12:05,592 - openai._base_client - INFO - Retrying request to /embeddings in 6.476055 seconds
+2025-06-11 12:12:12,094 - openai._base_client - INFO - Retrying request to /embeddings in 6.856599 seconds
+2025-06-11 12:12:18,994 - openai._base_client - INFO - Retrying request to /embeddings in 6.581961 seconds
+2025-06-11 12:12:25,607 - openai._base_client - INFO - Retrying request to /embeddings in 6.743346 seconds
+2025-06-11 12:12:32,384 - openai._base_client - INFO - Retrying request to /embeddings in 7.957147 seconds
+2025-06-11 12:17:08,858 - storage.milvus_store - INFO - Connected to Milvus successfully
+2025-06-11 12:17:08,870 - storage.milvus_store - INFO - Dropped existing collection general_docs
+2025-06-11 12:17:08,871 - storage.milvus_store - INFO - Creating new collection: general_docs
+2025-06-11 12:17:09,437 - __main__ - INFO - Starting document processing...
+2025-06-11 12:17:09,460 - data_pipeline.loader - INFO - Loaded 1 documents from data
+2025-06-11 12:17:12,044 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-11 12:17:12,327 - openai._base_client - INFO - Retrying request to /embeddings in 0.424036 seconds
+2025-06-11 12:17:12,783 - openai._base_client - INFO - Retrying request to /embeddings in 0.766388 seconds
+2025-06-11 12:17:13,574 - openai._base_client - INFO - Retrying request to /embeddings in 1.816272 seconds
+2025-06-11 12:17:15,421 - openai._base_client - INFO - Retrying request to /embeddings in 3.504318 seconds
+2025-06-11 12:17:47,491 - storage.milvus_store - INFO - Connected to Milvus successfully
+2025-06-11 12:17:47,509 - storage.milvus_store - INFO - Dropped existing collection general_docs
+2025-06-11 12:17:47,512 - storage.milvus_store - INFO - Creating new collection: general_docs
+2025-06-11 12:17:48,066 - __main__ - INFO - Starting document processing...
+2025-06-11 12:17:48,087 - data_pipeline.loader - INFO - Loaded 1 documents from data
+2025-06-11 12:17:50,348 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-11 12:17:50,590 - openai._base_client - INFO - Retrying request to /embeddings in 0.415418 seconds
+2025-06-11 12:17:51,030 - openai._base_client - INFO - Retrying request to /embeddings in 0.762405 seconds
+2025-06-11 12:17:51,814 - openai._base_client - INFO - Retrying request to /embeddings in 1.531052 seconds
+2025-06-11 12:17:53,385 - openai._base_client - INFO - Retrying request to /embeddings in 3.639473 seconds
+2025-06-11 12:17:57,063 - openai._base_client - INFO - Retrying request to /embeddings in 6.631439 seconds
+2025-06-11 12:21:38,981 - storage.milvus_store - INFO - Connected to Milvus successfully
+2025-06-11 12:21:38,994 - __main__ - INFO - Starting document processing...
+2025-06-11 12:21:39,026 - data_pipeline.loader - INFO - Loaded 1 documents from data
+2025-06-11 12:21:41,836 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-11 12:21:42,101 - openai._base_client - INFO - Retrying request to /embeddings in 0.444268 seconds
+2025-06-11 12:21:42,570 - openai._base_client - INFO - Retrying request to /embeddings in 0.772053 seconds
+2025-06-11 12:21:43,366 - openai._base_client - INFO - Retrying request to /embeddings in 1.860733 seconds
+2025-06-11 12:21:45,257 - openai._base_client - INFO - Retrying request to /embeddings in 3.259360 seconds
+2025-06-11 12:34:10,207 - storage.milvus_store - INFO - Connected to Milvus successfully
+2025-06-11 12:34:10,218 - storage.milvus_store - INFO - Dropped existing collection general_docs
+2025-06-11 12:34:10,219 - storage.milvus_store - INFO - Creating new collection: general_docs
+2025-06-11 12:34:10,766 - __main__ - INFO - Starting document processing...
+2025-06-11 12:34:10,787 - data_pipeline.loader - INFO - Loaded 1 documents from data
+2025-06-11 12:34:12,836 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-11 12:34:13,140 - openai._base_client - INFO - Retrying request to /embeddings in 0.419357 seconds
+2025-06-11 12:34:13,580 - openai._base_client - INFO - Retrying request to /embeddings in 0.915476 seconds
+2025-06-11 12:34:14,522 - openai._base_client - INFO - Retrying request to /embeddings in 1.696906 seconds
+2025-06-11 12:34:16,265 - openai._base_client - INFO - Retrying request to /embeddings in 3.614985 seconds
+2025-06-11 12:34:19,913 - openai._base_client - INFO - Retrying request to /embeddings in 7.447151 seconds
+2025-06-11 12:41:20,668 - storage.milvus_store - INFO - Connected to Milvus successfully
+2025-06-11 12:41:20,682 - storage.milvus_store - INFO - Dropped existing collection general_docs
+2025-06-11 12:41:20,687 - storage.milvus_store - INFO - Creating new collection: general_docs
+2025-06-11 12:41:21,252 - __main__ - INFO - Starting document processing...
+2025-06-11 12:41:21,272 - data_pipeline.loader - INFO - Loaded 1 documents from data
+2025-06-11 12:41:25,649 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-11 12:41:25,966 - openai._base_client - INFO - Retrying request to /embeddings in 0.434927 seconds
+2025-06-11 12:41:26,432 - openai._base_client - INFO - Retrying request to /embeddings in 0.826071 seconds
+2025-06-11 12:41:27,291 - openai._base_client - INFO - Retrying request to /embeddings in 1.581704 seconds

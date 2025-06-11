@@ -27,7 +27,7 @@ class DocumentProcessingPipeline:
             input_dir=input_dir,
             parsing_mode=parsing_mode
         )
-        self.storage = MilvusStorage(collection_name=collection_name)
+        self.storage = MilvusStorage(collection_name=collection_name, recreate_collection=True)
         self.logger = logging.getLogger(__name__)
 
     async def validate_metadata(self, nodes: List[BaseNode]) -> List[BaseNode]:
@@ -96,4 +96,3 @@ async def document_processing_main():
 
 if __name__ == "__main__":
     asyncio.run(document_processing_main())
-

@@ -4,6 +4,7 @@ from llama_index.embeddings.huggingface import HuggingFaceEmbedding
 from llama_index.llms.openai import OpenAI
 import logging
 from pymilvus import DataType
+from config.app_config import config
 
 class Settings:
     # Embedding Models
@@ -17,7 +18,7 @@ class Settings:
     MILVUS_USER = os.getenv("MILVUS_USER", "root")
     MILVUS_PASSWORD = os.getenv("MILVUS_PASSWORD", "Milvus")
     MILVUS_DATABASE = os.getenv("MILVUS_DATABASE", "default")
-    MILVUS_COLLECTION = "conversational_rag_test"
+    MILVUS_COLLECTION = "general_docs"
     MILVUS_SECURE: bool = False
 
     # Data Processing
@@ -35,8 +36,9 @@ class Settings:
         try:
             return OpenAIEmbedding(
                 model=self.EMBEDDING_MODEL,
-                api_key=os.getenv("OPENAI_API_KEY"),
-                timeout=10
+                api_key=config['llm_model']['api_key'],
+                timeout=30,  # Increased timeout
+                max_retries=3
             )
         except Exception as e:
             logging.warning(f"OpenAI embedding failed, using HuggingFace: {e}")
@@ -47,10 +49,10 @@ class Settings:
     @property
     def llm(self):
         return OpenAI(
-            model="gpt-4-turbo-preview",
+            model="gpt-4o-2024-05-13",
             temperature=0.1,
             max_tokens=2000,
-            api_key=os.getenv("OPENAI_API_KEY")
+            api_key=config['llm_model']['api_key']
         )
 
 settings = Settings()

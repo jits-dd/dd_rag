@@ -20,10 +20,14 @@ from config.settings import settings
 logger = logging.getLogger(__name__)
 
 class MilvusStorage:
-    def __init__(self, collection_name: str = None):
+    def __init__(self, collection_name: str = None, recreate_collection: bool = False):
         self.collection_name = collection_name or settings.MILVUS_COLLECTION
         self._connect()
-        self.vector_store = self._initialize_collection()
+        self.vector_store = self._initialize_collection(recreate=recreate_collection)
+
+    def get_vector_store(self) -> MilvusVectorStore:
+        """Get vector store with current configuration"""
+        return self.vector_store
 
     def _connect(self):
         """Establish connection with authentication and retry logic"""
@@ -64,46 +68,47 @@ class MilvusStorage:
         ]
         return CollectionSchema(fields, description="Investment conversation documents")
 
-    def _initialize_collection(self) -> MilvusVectorStore:
-        """Initialize collection with guaranteed schema"""
+    def _initialize_collection(self, recreate: bool = False) -> MilvusVectorStore:
+        """Initialize collection with proper field mappings"""
         try:
-            # Force drop if exists
-            if self.collection_name in utility.list_collections():
+            # Only drop if explicitly requested
+            if recreate and self.collection_name in utility.list_collections():
                 utility.drop_collection(self.collection_name)
                 logger.info(f"Dropped existing collection {self.collection_name}")
 
-            # Create new collection with full schema
-            schema = self._create_collection_schema()
-            collection = Collection(
-                name=self.collection_name,
-                schema=schema,
-                using="default"
-            )
+            # Create new collection only if it doesn't exist
+            if self.collection_name not in utility.list_collections():
+                logger.info(f"Creating new collection: {self.collection_name}")
+                schema = self._create_collection_schema()
+                collection = Collection(
+                    name=self.collection_name,
+                    schema=schema,
+                    using="default"
+                )
+                collection.create_index(
+                    field_name="embedding",
+                    index_params={
+                        "metric_type": "IP",
+                        "index_type": "HNSW",
+                        "params": {"M": 16, "efConstruction": 200}
+                    }
+                )
 
-            # Create index
-            collection.create_index(
-                field_name="embedding",
-                index_params={
-                    "metric_type": "IP",
-                    "index_type": "HNSW",
-                    "params": {"M": 16, "efConstruction": 200}
-                }
-            )
-
-            # Initialize vector store
+            # Initialize vector store with explicit field mappings
             vector_store = MilvusVectorStore(
                 collection_name=self.collection_name,
                 dim=settings.EMBEDDING_DIM,
-                overwrite=False,  # Important: We already created the collection
+                overwrite=False,
                 uri=f"{'https' if settings.MILVUS_SECURE else 'http'}://{settings.MILVUS_HOST}:{settings.MILVUS_PORT}",
+                user=settings.MILVUS_USER if not settings.MILVUS_SECURE else None,
+                password=settings.MILVUS_PASSWORD if not settings.MILVUS_SECURE else None,
                 token=f"{settings.MILVUS_USER}:{settings.MILVUS_PASSWORD}" if settings.MILVUS_SECURE else None,
-                text_field="text",
-                embedding_field="embedding",
-                metadata_field="metadata",
-                stored_fields=["metadata", "file_name", "title", "summary"]
+                text_field="text",  # Explicitly set text field
+                embedding_field="embedding",  # Explicitly set embedding field
+                metadata_field="metadata",  # Explicitly set metadata field
+                stored_fields=["text", "metadata", "file_name", "title", "summary"]  # Fields to store
             )
 
-            logger.info(f"Created new collection {self.collection_name} with full schema")
             return vector_store
 
         except Exception as e:
@@ -186,3 +191,17 @@ class MilvusStorage:
 
         except Exception as e:
             logger.error(f"Diagnostic failed: {e}", exc_info=True)
+
+    def _get_existing_vector_store(self) -> MilvusVectorStore:
+        """Get existing vector store instance"""
+        return MilvusVectorStore(
+            collection_name=self.collection_name,
+            dim=settings.EMBEDDING_DIM,
+            overwrite=False,
+            uri=f"http://{settings.MILVUS_HOST}:{settings.MILVUS_PORT}",
+            user=settings.MILVUS_USER,
+            password=settings.MILVUS_PASSWORD,
+            db_name=settings.MILVUS_DATABASE,
+            text_field="text",
+            embedding_field="embedding"
+        )

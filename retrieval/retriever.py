@@ -15,12 +15,22 @@ class AdvancedConversationRetriever(BaseRetriever):
         self.vector_store = vector_store
         self.embed_model = embed_model
         self.logger = logging.getLogger(__name__)
+
+        # Ensure collection is loaded
+        connections.connect(
+            alias="default",
+            host=settings.MILVUS_HOST,
+            port=settings.MILVUS_PORT,
+            user=settings.MILVUS_USER,
+            password=settings.MILVUS_PASSWORD
+        )
+        self.collection = Collection(vector_store.collection_name)
+        self.collection.load()
+
         self.reranker = LLMRerank(
             llm=settings.llm,
             top_n=settings.RERANK_TOP_K
         )
-        self.collection = Collection(self.vector_store.collection_name)
-        self.collection.load()
 
     def _retrieve(self, query_bundle: QueryBundle) -> List[NodeWithScore]:
         """Complete retrieval implementation with direct Milvus access"""
@@ -41,10 +51,10 @@ class AdvancedConversationRetriever(BaseRetriever):
             print("Executing Milvus search...")
             results = self.collection.search(
                 data=[query_embedding],
-                anns_field=self.vector_store.embedding_field,
+                anns_field="embedding",  # Use direct field name
                 param=search_params,
                 limit=settings.RETRIEVAL_TOP_K * 2,
-                output_fields=[self.vector_store.text_field, "metadata"]
+                output_fields=["text", "metadata", "file_name", "title", "summary"]
             )
 
             print(f"Found {len(results[0])} raw results")
@@ -54,9 +64,9 @@ class AdvancedConversationRetriever(BaseRetriever):
             for hit in results[0]:
                 nodes.append(NodeWithScore(
                     node=TextNode(
-                        text=hit.entity.get(self.vector_store.text_field),
+                        text=hit.entity.get("text"),
                         metadata=hit.entity.get("metadata"),
-                        embedding=hit.entity.get(self.vector_store.embedding_field)
+                        embedding=hit.entity.get("embedding")
                     ),
                     score=hit.score
                 ))

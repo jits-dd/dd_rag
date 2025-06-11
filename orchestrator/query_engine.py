@@ -91,3 +91,43 @@ class AdvancedConversationEngine:
                 "answer": "Error processing your query",
                 "error": str(e)
             }
+
+    # def query(self, query_str: str):
+    #     try:
+    #         query_bundle = QueryBundle(query_str)
+    #         nodes = self.retriever.retrieve(query_bundle)
+    #
+    #         if not nodes:
+    #             return {
+    #                 "answer": "No relevant information found in our records",
+    #                 "sources": []
+    #             }
+    #
+    #         # Get the most relevant node for context
+    #         context = nodes[0].node.text
+    #         metadata = nodes[0].node.metadata
+    #
+    #         prompt = f"""Based on this context:
+    #     {context}
+    #
+    #     Question: {query_str}
+    #
+    #     Provide a concise answer focusing on the business model aspects:"""
+    #
+    #         llm_response = settings.llm.complete(prompt)
+    #
+    #         return {
+    #             "answer": str(llm_response),
+    #             "sources": [{
+    #                 "text": nodes[0].node.text,
+    #                 "score": nodes[0].score,
+    #                 "metadata": metadata
+    #             }]
+    #         }
+    #
+    #     except Exception as e:
+    #         self.logger.error(f"Query failed: {e}")
+    #         return {
+    #             "answer": "Error processing your query",
+    #             "error": str(e)
+    #         }

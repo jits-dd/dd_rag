@@ -6,6 +6,7 @@ from typing import List, Optional, Dict, Any
 from datetime import datetime, timezone
 from pathlib import Path
 from config.settings import settings
+from config.app_config import config
 
 from llama_index.core import SimpleDirectoryReader
 from llama_index.core.node_parser import (
@@ -36,7 +37,11 @@ class AdvancedDocumentLoader:
         self.embed_model = OpenAIEmbedding(model=embed_model)
 
         # Initialize OpenAI client for summarization
-        self.openai_client = AsyncOpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+        self.openai_client = AsyncOpenAI(
+            api_key="tQPcEbKybXQAUkI60QoeF5pmC63EuvmOMoA8UjZfKREbgDfVnInzu1FxkAIxP1T3BlbkFJ6rhONZM-0RTT3Z8eoW9rJEDDO7vtjNH36sSr5h8S4pmT_E-l4FIV5Kr1-Q40aujHQuRXaYmA8A",
+            timeout=30,  # Increased timeout
+            max_retries=3
+            )
 
         self.conversation_metadata_fields = [
             "participants",
