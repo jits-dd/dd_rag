@@ -486,3 +486,59 @@ pymilvus.exceptions.MilvusException: <MilvusException: (code=1100, message=varch
 2025-06-12 11:48:16,704 - storage.milvus_store - INFO - - File: boston.txt
 2025-06-12 11:48:16,704 - storage.milvus_store - INFO - - Metadata keys: ['source', 'file_name', 'file_type', 'processing_time', 'participants', 'discussion_topics', 'investment_stage', 'key_metrics', 'title', 'summary', 'content_length', 'node_type', 'enhanced_at', 'processing_strategy', 'document_type']
 2025-06-12 11:48:16,705 - __main__ - INFO - Processed 1 unique files
+2025-06-12 15:41:31,157 - storage.milvus_store - INFO - Connected to Milvus successfully
+2025-06-12 15:41:31,161 - storage.milvus_store - INFO - Creating new collection: general_docs
+2025-06-12 15:41:31,743 - __main__ - INFO - Starting document processing...
+2025-06-12 15:41:32,503 - data_pipeline.loader - INFO - Loaded 2 documents from data
+2025-06-12 15:41:34,896 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-12 15:41:36,981 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-12 15:41:39,756 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-12 15:41:41,814 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-12 15:41:45,417 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-12 15:41:46,039 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-12 15:41:48,165 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-12 15:41:48,816 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-12 15:41:50,892 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-12 15:41:51,554 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-12 15:41:54,478 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-12 15:41:54,939 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-12 15:41:55,992 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-12 15:41:56,689 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-12 15:41:58,305 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-12 15:41:58,702 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-12 15:41:58,945 - __main__ - INFO - Processed 6 document chunks
+2025-06-12 15:41:58,945 - __main__ - INFO - Storing documents in vector database...
+2025-06-12 15:42:05,014 - storage.milvus_store - INFO - Inserted 6 entities
+2025-06-12 15:42:05,035 - storage.milvus_store - INFO - Verified metadata storage: {'source': 'document', 'file_name': 'boston.txt', 'file_type': 'txt', 'processing_time': '2025-06-12T10:11:34.903673+00:00', 'participants': [{'name': 'Investor', 'role': 'Investor'}, {'name': 'Fusion Food and Beverage Dynamics', 'role': 'Company'}], 'discussion_topics': ['Business model', 'Revenue streams', 'Challenges', 'Market size and growth potential', 'Competitors', 'Growth strategy', 'Product launches', 'Team and leadership', 'Opportunities in the sector'], 'investment_stage': None, 'key_metrics': ['Global market size for Food and Beverage solutions: $120 billion', 'Market growth rate: 15% per year'], 'title': 'Fusion Food and Beverage Dynamics: Navigating Trends and Growth Strategies', 'summary': 'Fusion Food and Beverage Dynamics is leveraging modern technologies and strategic partnerships to stay competitive in the evolving sector. Their hybrid business model combines subscription-based services with enterprise solutions, focusing on enhancing operational efficiency through AI-driven analytics. The company generates revenue from licensing, subscription fees, consulting services, and strategic collaborations, with a recent premium offering for large enterprises showing promising growth. Challenges include scaling operations while maintaining personalized customer support and ensuring regulatory compliance, particularly in data protection. With a global market size of $120 billion and 15% annual growth, Fusion Food and Beverage Dynamics targets a niche within the industry by offering tailored solutions to address specific pain points.', 'content_length': 1670, 'node_type': 'TextNode', 'enhanced_at': '2025-06-12T10:11:45.422464+00:00', 'processing_strategy': 'semantic', 'document_type': 'investment_conversation'}
+2025-06-12 15:42:05,072 - storage.milvus_store - INFO - Diagnostic results:
+2025-06-12 15:42:05,072 - storage.milvus_store - INFO - - File: boston.txt
+2025-06-12 15:42:05,072 - storage.milvus_store - INFO - - Metadata keys: ['source', 'file_name', 'file_type', 'processing_time', 'participants', 'discussion_topics', 'investment_stage', 'key_metrics', 'title', 'summary', 'content_length', 'node_type', 'enhanced_at', 'processing_strategy', 'document_type']
+2025-06-12 15:42:05,072 - __main__ - INFO - Processed 2 unique files
+2025-06-12 16:36:14,518 - storage.milvus_store - INFO - Connected to Milvus successfully
+2025-06-12 16:36:14,523 - storage.milvus_store - INFO - Creating new collection: general_docs
+2025-06-12 16:36:15,104 - __main__ - INFO - Starting document processing...
+2025-06-12 16:36:15,822 - data_pipeline.loader - INFO - Loaded 2 documents from data
+2025-06-12 16:36:18,220 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-12 16:36:21,030 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-12 16:36:23,844 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-12 16:36:25,482 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-12 16:36:28,649 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-12 16:36:29,119 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-12 16:36:30,717 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-12 16:36:31,474 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-12 16:36:33,110 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-12 16:36:33,866 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-12 16:36:35,670 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-12 16:36:36,032 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-12 16:36:41,663 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-12 16:36:42,388 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-12 16:36:44,139 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-12 16:36:44,720 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-12 16:36:44,985 - __main__ - INFO - Processed 6 document chunks
+2025-06-12 16:36:44,985 - __main__ - INFO - Storing documents in vector database...
+2025-06-12 16:36:50,754 - storage.milvus_store - INFO - Inserted 6 entities
+2025-06-12 16:36:50,809 - storage.milvus_store - INFO - Verified metadata storage: {'source': 'document', 'file_name': 'boston.txt', 'file_type': 'txt', 'processing_time': '2025-06-12T11:06:18.228486+00:00', 'participants': [{'name': 'Investor', 'role': 'Investor'}, {'name': 'Fusion FoodTech', 'role': 'Company'}], 'discussion_topics': ['Business model', 'Revenue streams', 'Challenges', 'Market size and growth outlook', 'Competitors and differentiation', 'Five-year roadmap', 'Product updates', 'Team', 'Opportunities in F&B'], 'investment_stage': None, 'key_metrics': ['Global F&B tech solutions market value: $120B', 'Market growth rate: 15% annually'], 'title': 'Fusion FoodTech: Innovating in the Food and Beverage Sector with AI Solutions', 'summary': 'Fusion FoodTech is leveraging AI and strategic collaborations to stay ahead of consumer trends and regulatory changes in the rapidly evolving Food and Beverage sector. Their hybrid business model includes subscription-based insights platforms and enterprise AI solutions, with revenue streams from platform subscriptions, licensing AI modules, F&B consulting engagements, and white-labeled analytics. The company aims to scale while maintaining a high-touch client experience, stay compliant with food safety and data privacy regulations, and differentiate from competitors through faster iteration cycles and customizability.', 'content_length': 2737, 'node_type': 'TextNode', 'enhanced_at': '2025-06-12T11:06:28.657675+00:00', 'processing_strategy': 'semantic', 'document_type': 'investment_conversation'}
+2025-06-12 16:36:50,827 - storage.milvus_store - INFO - Diagnostic results:
+2025-06-12 16:36:50,827 - storage.milvus_store - INFO - - File: san_franciso.txt
+2025-06-12 16:36:50,827 - storage.milvus_store - INFO - - Metadata keys: ['source', 'file_name', 'file_type', 'processing_time', 'participants', 'discussion_topics', 'investment_stage', 'key_metrics', 'title', 'summary', 'content_length', 'node_type', 'enhanced_at', 'processing_strategy', 'document_type']
+2025-06-12 16:36:50,827 - __main__ - INFO - Processed 2 unique files
