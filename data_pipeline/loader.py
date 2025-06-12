@@ -6,7 +6,6 @@ from typing import List, Optional, Dict, Any
 from datetime import datetime, timezone
 from pathlib import Path
 from config.settings import settings
-from config.app_config import config
 
 from llama_index.core import SimpleDirectoryReader
 from llama_index.core.node_parser import (

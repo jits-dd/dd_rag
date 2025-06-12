@@ -466,3 +466,23 @@ pymilvus.exceptions.MilvusException: <MilvusException: (code=1100, message=varch
 2025-06-11 12:41:25,966 - openai._base_client - INFO - Retrying request to /embeddings in 0.434927 seconds
 2025-06-11 12:41:26,432 - openai._base_client - INFO - Retrying request to /embeddings in 0.826071 seconds
 2025-06-11 12:41:27,291 - openai._base_client - INFO - Retrying request to /embeddings in 1.581704 seconds
+2025-06-12 11:47:51,732 - storage.milvus_store - INFO - Connected to Milvus successfully
+2025-06-12 11:47:51,738 - storage.milvus_store - INFO - Creating new collection: general_docs
+2025-06-12 11:47:52,368 - __main__ - INFO - Starting document processing...
+2025-06-12 11:47:52,871 - data_pipeline.loader - INFO - Loaded 1 documents from data
+2025-06-12 11:47:56,482 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-12 11:48:00,050 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-12 11:48:03,921 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-12 11:48:05,389 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-12 11:48:07,445 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-12 11:48:08,042 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-12 11:48:09,729 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-12 11:48:10,357 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-06-12 11:48:10,564 - __main__ - INFO - Processed 3 document chunks
+2025-06-12 11:48:10,565 - __main__ - INFO - Storing documents in vector database...
+2025-06-12 11:48:16,625 - storage.milvus_store - INFO - Inserted 3 entities
+2025-06-12 11:48:16,667 - storage.milvus_store - INFO - Verified metadata storage: {'source': 'document', 'file_name': 'boston.txt', 'file_type': 'txt', 'processing_time': '2025-06-12T06:17:56.490674+00:00', 'participants': [{'name': 'Investor', 'role': 'Investor'}, {'name': 'Fusion Food and Beverage Dynamics', 'role': 'Company'}], 'discussion_topics': ['Business model', 'Revenue streams', 'Challenges', 'Market size and growth potential', 'Competitors', 'Growth strategy', 'Product launches', 'Team and leadership', 'Biggest opportunity in the sector'], 'investment_stage': None, 'key_metrics': ['Global market size for Food and Beverage solutions: $120 billion', 'Market growth rate: 15% per year'], 'title': 'Fusion Food and Beverage Dynamics: Business Model and Growth Strategies', 'summary': 'Fusion Food and Beverage Dynamics is leveraging modern technologies and strategic partnerships to stay competitive in the evolving Food and Beverage sector. Their hybrid business model combines subscription-based services with enterprise solutions, focusing on enhancing operational efficiency through AI-driven analytics. The company generates revenue from licensing, subscription fees, consulting services, and strategic collaborations, with a recent premium offering for large enterprises showing promising growth. Challenges include scaling operations while maintaining personalized customer support and ensuring regulatory compliance, particularly in data protection. With a global market size of $120 billion and a growth rate of 15% per year, Fusion Food and Beverage Dynamics aims to capture a niche market by offering tailored solutions to address specific industry pain points.', 'content_length': 1670, 'node_type': 'TextNode', 'enhanced_at': '2025-06-12T06:18:04.515588+00:00', 'processing_strategy': 'semantic', 'document_type': 'investment_conversation'}
+2025-06-12 11:48:16,704 - storage.milvus_store - INFO - Diagnostic results:
+2025-06-12 11:48:16,704 - storage.milvus_store - INFO - - File: boston.txt
+2025-06-12 11:48:16,704 - storage.milvus_store - INFO - - Metadata keys: ['source', 'file_name', 'file_type', 'processing_time', 'participants', 'discussion_topics', 'investment_stage', 'key_metrics', 'title', 'summary', 'content_length', 'node_type', 'enhanced_at', 'processing_strategy', 'document_type']
+2025-06-12 11:48:16,705 - __main__ - INFO - Processed 1 unique files

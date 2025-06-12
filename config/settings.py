@@ -4,7 +4,6 @@ from llama_index.embeddings.huggingface import HuggingFaceEmbedding
 from llama_index.llms.openai import OpenAI
 import logging
 from pymilvus import DataType
-from config.app_config import config
 
 class Settings:
     # Embedding Models
