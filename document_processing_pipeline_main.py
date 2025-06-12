@@ -5,15 +5,9 @@ from data_pipeline.loader import AdvancedDocumentLoader
 from typing import List, Dict, Any, Optional
 from llama_index.core.schema import Document, TextNode, BaseNode
 
-# Configure logging
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-    handlers=[
-        logging.FileHandler("document_processing.log"),
-        logging.StreamHandler()
-    ]
-)
+logging.basicConfig(level=logging.INFO,
+                    format='%(asctime)s [%(levelname)s] (%(threadName)s) %(filename)s - %(message)s',
+                    handlers=[logging.StreamHandler()])
 
 class DocumentProcessingPipeline:
     def __init__(

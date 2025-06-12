@@ -7,15 +7,9 @@ import argparse
 import asyncio
 from storage.milvus_store import MilvusStorage
 
-# Configure logging
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-    handlers=[
-        logging.FileHandler("query_engine.log"),
-        logging.StreamHandler()
-    ]
-)
+logging.basicConfig(level=logging.INFO,
+                    format='%(asctime)s [%(levelname)s] (%(threadName)s) %(filename)s - %(message)s',
+                    handlers=[logging.StreamHandler()])
 
 def initialize_query_system():
     """Initialize only the query components"""
