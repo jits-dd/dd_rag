@@ -16,7 +16,7 @@ Investor: Any upcoming product launches?
 VisionStyle AI: Yes, we're launching a B2B style curation platform next quarter that will let retailers auto-generate collections based on real-time consumer sentiment and purchasing behavior.
 Investor: Tell me more about your leadership team.
 VisionStyle AI: Our co-founders have experience at ASOS, Meta, and Accenture. The team combines domain knowledge in fashion, AI, and consumer psychology.
-Investor: What's the biggest opportunity in fashion tech?
+Investor: What's the biggest opportunity in fashion?
 VisionStyle AI: The shift to hyper-personalized shopping experiences. Whoever can deliver on that will define the next decade of retail—and that’s what we’re building toward.
 Investor: Impressive. Looking forward to updates!
 VisionStyle AI: Thank you! We're excited to lead the next wave of fashion-tech innovation.
