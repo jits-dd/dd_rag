@@ -1,0 +1,26 @@
+Investor: Hi there. What is NutridataOS building in the food supply chain space?
+NutridataOS: We're a risk intelligence platform that gives food brands real-time visibility into geopolitical, climate, labor, and contamination risks across their ingredient supply chain.
+Investor: That’s timely. Risk has become unpredictable lately.
+NutridataOS: Exactly. Ingredient volatility, export bans, or even protests near a port can cripple delivery. Our platform gives brands an early-warning system with predictive alerts and contingency planning tools.
+Investor: Where do you get your data?
+NutridataOS: We aggregate satellite data, weather patterns, shipping logs, crop yield projections, and real-time news and social signals. All fed into a proprietary risk scoring engine.
+Investor: Who uses this today?
+NutridataOS: Global sourcing teams at CPGs, food importers, and large QSR chains. A few insurers use our data to model supply-chain-linked underwriting.
+Investor: Do you just surface alerts, or also suggest action?
+NutridataOS: Both. We offer dynamic re-routing options, alternate supplier recommendations, and expected cost/time impacts—within minutes of a detected disruption.
+Investor: How do you monetize?
+NutridataOS: SaaS model per seat and per ingredient stream tracked. Enterprise dashboards range from $50K–$400K/year depending on complexity.
+Investor: What’s your tech advantage?
+NutridataOS: Our supply-chain LLM understands 200K+ food ingredient SKUs, maps them to their sourcing geos, and simulates forward-looking risks using ML forecasting.
+Investor: Any case study?
+NutridataOS: One client used our alert to reallocate their oat protein sourcing 4 weeks before a Canada transport strike, avoiding a $900K loss in delayed shipments.
+Investor: Very compelling. Who’s on the team?
+NutridataOS: Former executives from UN FAO, global logistics firms, and food tech startups. Our lead data scientist built crisis simulation models for the World Bank.
+Investor: Are you expanding into financial forecasting too?
+NutridataOS: Yes—we’re testing price volatility prediction for commodities like vanilla, cocoa, and soy. Early results are very promising.
+Investor: Any integrations with ERP or procurement tools?
+NutridataOS: We integrate with SAP Ariba, Oracle NetSuite, and Coupa. Alerts and supplier rerouting feed directly into existing workflows.
+Investor: What’s next?
+NutridataOS: Launching a “resilience score” for F&B portfolios—helping investors assess how prepared their food brands are for future disruptions.
+Investor: Are you raising capital?
+NutridataOS: Yes, seeking $8M to expand our coverage, enhance AI modeling, and scale in LATAM and Africa.

@@ -1,0 +1,24 @@
+Investor: Hi, I’ve been hearing about GrainLoop’s work in sustainable sourcing. Tell me more about what you do.
+GrainLoop: Absolutely. We’re building a dynamic ingredient marketplace powered by AI that connects F&B brands with regenerative and climate-resilient grain suppliers. Think of it as a sustainability-optimized supply chain layer.
+Investor: Interesting. How do you match suppliers with brands?
+GrainLoop: Our AI considers carbon intensity, nutrient quality, price volatility, and geographic proximity. Brands input their formulation and ESG goals, and we surface the best supplier matches in real-time.
+Investor: So are you a marketplace or a data platform?
+GrainLoop: Both. The marketplace handles transactions, and the intelligence layer drives value. We monetize via transaction fees, and also license our carbon and traceability data APIs to large food manufacturers.
+Investor: Who’s using the platform?
+GrainLoop: We’re working with over 120 suppliers across 8 countries and have onboarded 35 food brands—from upcycled snack startups to global cereal producers.
+Investor: What’s the biggest challenge you solve for buyers?
+GrainLoop: Uncertainty. Sustainable sourcing is fragmented. Our platform brings transparency to practices, pricing, and certifications, plus we offer predictive insights on crop availability due to climate factors.
+Investor: What’s your biggest differentiator?
+GrainLoop: Our proprietary sustainability score combines farm-level data, satellite imagery, and third-party audits. It’s not just greenwashing—it’s measurable impact.
+Investor: What kind of traction have you seen?
+GrainLoop: $9.1M in GMV last quarter, growing 19% month-over-month. We recently inked a partnership with a global bakery group to handle 100% of their non-GMO grain procurement.
+Investor: How scalable is this model globally?
+GrainLoop: Highly scalable. Our backend architecture is modular, so onboarding new countries or crop types is fast. We’re launching in Brazil and Indonesia next quarter.
+Investor: Who’s on your team?
+GrainLoop: We’re a mix of agri-data scientists, former CPG buyers, and climate tech engineers. The founding team has prior exits in procurement automation and supply chain finance.
+Investor: Do you work directly with farmers?
+GrainLoop: Yes. We help them digitize their practices, improve traceability, and access better buyers. We also offer micro-financing options based on projected demand signals from the brands.
+Investor: What’s the long-term vision?
+GrainLoop: To be the default sustainability engine for food supply chains. Whether it’s wheat or cassava or lentils—we want to optimize every input from farm to factory.
+Investor: Sounds impressive. Are you raising currently?
+GrainLoop: Yes, we’re preparing a $10M Series A to expand the data science team, grow supplier onboarding, and enter new regions.

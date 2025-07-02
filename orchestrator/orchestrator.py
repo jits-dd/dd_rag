@@ -23,18 +23,21 @@ class AgentOrchestrator:
     def _select_agent(self, query: str) -> Dict[str, str]:
         """Agent selection with constrained output"""
         prompt = f"""
-        Analyze the query and select exactly ONE agent.
+        Analyze the query and select exactly ONE agent based on these strict rules:
+        
+        1. Choose 'Document Analyst' for factual questions about companies, products, or services.
+        2. Choose 'Conversation Analyst' only for analyzing dialog exchanges between people.
         
         Available Agents:
         {", ".join([f"{agent.name} ({agent.description})" for agent in self.agents])}
         
         Query: {query}
         
-        Respond ONLY with valid JSON in this format:
+        Respond ONLY with this exact JSON format:
         {{
             "agent": "agent_name",
             "reason": "explanation",
-            "rewritten_query": "optimized_query"
+            "rewritten_query": "{query}"  // Never modify the original query
         }}
         """
 

@@ -1,0 +1,34 @@
+Investor: Hi, great to meet you. I’ve been following the rise of intelligent food manufacturing platforms. What’s IntelliMeal Systems building exactly?
+IntelliMeal: Great to connect! IntelliMeal is an AI-powered operating system for mid-size food manufacturers. We help them manage recipe formulation, production planning, compliance, and shelf-life analytics—all in one place.
+Investor: That’s ambitious. Is it like an ERP for food factories?
+IntelliMeal: Sort of, but built from the ground up for the specific needs of the food and beverage industry. Traditional ERPs weren’t designed to deal with volatile ingredient behavior, perishability, or nutrition profiles.
+Investor: Who are your current customers?
+IntelliMeal: We’re working with over 30 clients, including specialty snack brands, dairy cooperatives, and nutraceutical manufacturers. Most were previously on spreadsheets or using fragmented legacy tools.
+Investor: And your pricing model?
+IntelliMeal: We use a modular SaaS model. Customers pay a base platform fee, and then usage-based pricing for modules like quality control AI or regulatory export documentation.
+Investor: What’s your biggest value add?
+IntelliMeal: We reduce wastage by up to 18% and cut QA time by 35%. Our AI also flags formulation risks based on historical data and real-time ingredient properties.
+Investor: How do you source the ingredient data?
+IntelliMeal: We have direct partnerships with ingredient suppliers and third-party lab testing databases. Our platform learns over time from actual batch outcomes to refine the ingredient performance models.
+Investor: What’s the broader vision?
+IntelliMeal: To become the food industry’s data nerve center. Eventually, we want our system to power adaptive production—where recipes, cook times, and sourcing adjust dynamically based on demand and inputs.
+Investor: Who are you competing with?
+IntelliMeal: Mostly outdated ERP vendors or custom-built tools. Our closest direct competitor is FlavorOps, but we offer broader operational coverage and better UI.
+Investor: What’s your GTM strategy?
+IntelliMeal: We go direct for now—content-driven inbound and founder-led sales. We're also exploring partnerships with food incubators and digital supply chain firms to reach early-stage producers.
+Investor: Are there international plans?
+IntelliMeal: Yes. We’re entering Southeast Asia this year. Many fast-growing food SMEs there are underserved by global platforms and hungry for automation.
+Investor: How do you handle compliance differences?
+IntelliMeal: Our compliance module is customizable by region. It can auto-generate labels and export docs based on local norms, like FDA, EFSA, or FSSAI.
+Investor: Tell me more about the tech stack.
+IntelliMeal: Backend is Python-based, with ML pipelines using TensorFlow and PyTorch. We use Kubernetes for scale and offer both cloud and on-premise deployment options for factories with air-gapped systems.
+Investor: What’s your moat?
+IntelliMeal: Proprietary ingredient behavior models, rich contextual QA datasets, and our integrated interface. Most platforms either focus on logistics or production. We bridge both, plus regulatory and innovation tools.
+Investor: Any metrics you can share?
+IntelliMeal: $1.4M in ARR, 90% net retention, and average onboarding time is under 3 weeks. We’ve just crossed 1,500 unique SKUs being managed through our platform.
+Investor: Very compelling. Who’s on the founding team?
+IntelliMeal: I led food systems R&D at Mondelez; my co-founder was a lead ML architect at Palantir. We’re backed by operators from Oatly and NotCo.
+Investor: What’s next?
+IntelliMeal: We’re launching our forecasting module next quarter, which combines historical sales, weather, and seasonality to drive batch planning.
+Investor: Appreciate the deep dive. Would love to stay close to your next round.
+IntelliMeal: Absolutely—we’re lining up a pre-Series A and happy to keep you posted.

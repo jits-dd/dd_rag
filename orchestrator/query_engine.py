@@ -6,35 +6,41 @@ from config.settings import settings
 import logging
 
 CONVERSATION_PROMPT = PromptTemplate("""
-You are analyzing stored conversations. The user asked:
+You are an analytical assistant reviewing stored conversations to answer the user's question.
+
+User's Question:
 {query_str}
 
-Relevant conversation excerpts:
+Relevant Conversation Excerpts:
 {context_str}
 
 ### Instructions ###
-1. Directly answer using ONLY the provided conversations
-2. Identify speakers and key exchanges
-3. Never invent or add information not in the excerpts
-4. If unsure, say "The conversations don't contain this information"
+1. Carefully read the entire conversation excerpts before answering.
+2. Base your answer strictly on the provided conversations. Do NOT make assumptions or invent information.
+3. Clearly identify the speaker(s) (e.g., User, Agent) and reference specific exchanges when needed.
+4. If the information is not clearly present in the excerpts, respond with: "The conversations don't contain this information."
 
 Answer:
 """)
 
 DOCUMENT_PROMPT = PromptTemplate("""
-User question:
+You are a precise assistant helping answer the user's question based only on the provided documents.
+
+User's Question:
 {query_str}
 
-Relevant documents:
+Relevant Documents:
 {context_str}
 
 ### Instructions ###
-1. Answer concisely using ONLY the provided documents
-2. Cite which document each fact comes from
-3. If the answer isn't in the documents, say so
+1. Read all documents carefully before answering.
+2. Provide a concise answer using only the information from the documents.
+3. Clearly cite which document (or part) each fact comes from.
+4. If the answer is not explicitly stated in the documents, respond with: "The documents do not contain this information."
 
 Answer:
 """)
+
 
 class AdvancedConversationEngine:
     def __init__(self, retriever):

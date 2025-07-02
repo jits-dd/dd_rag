@@ -1,0 +1,26 @@
+Investor: I heard TasteForm is helping food brands de-risk new product launches. How does it work?
+TasteForm: Exactly. We use predictive analytics and consumer behavior modeling to forecast the success of new F&B products before they go to market.
+Investor: What signals do you use to make predictions?
+TasteForm: We combine historical launch data, social sentiment, regional demand curves, and even food delivery behavior. Then we simulate product-market fit across geos, pricing tiers, and consumer personas.
+Investor: Fascinating. Who are your customers?
+TasteForm: We work with mid-to-large F&B brands as well as fast-scaling DTC players. They use us to decide what to launch, when, where, and at what price.
+Investor: How accurate are your forecasts?
+TasteForm: Our prediction model has a 78% accuracy rate over 90 days post-launch. That’s based on 86 launches tracked across snacks, beverages, and functional foods.
+Investor: How do you charge?
+TasteForm: Annual SaaS subscriptions based on SKUs modeled. We also offer a premium package that includes competitive intelligence and category benchmarking.
+Investor: Do you replace traditional focus groups?
+TasteForm: Not entirely, but we reduce the need for them. We simulate test markets digitally using our "Digital Taste Panels" built from millions of user interactions and demographic overlays.
+Investor: What’s your edge over standard trend tools like Mintel or Nielsen?
+TasteForm: They report what already happened. We tell you what’s likely to happen. Our system is proactive, adaptive, and SKU-level—built for R&D teams, not just marketers.
+Investor: Any big partnerships?
+TasteForm: We recently started working with a global beverage company’s R&D lab to evaluate the top 20 flavor candidates for 2025 launches.
+Investor: What's the future vision?
+TasteForm: A command center for F&B innovation—where any team can input an idea and get real-time go-to-market projections and risk flags.
+Investor: Do you integrate with manufacturing or ERP systems?
+TasteForm: Yes, we can pull in cost data, ingredient constraints, and manufacturing timelines to make the analysis grounded in operational feasibility.
+Investor: What’s your traction?
+TasteForm: $1.7M in ARR, 94% renewal rate. Our biggest client modeled 120 SKUs with us last quarter and cut failed launches by 40%.
+Investor: Sounds like you’re saving a lot of cost downstream.
+TasteForm: That’s the goal. We say, “Kill your bad ideas early—before they cost you shelf space, manufacturing slots, or brand equity.”
+Investor: Impressive. Are you raising?
+TasteForm: We’re opening a $4M round to expand into APAC and build deeper integrations with e-commerce demand data platforms.

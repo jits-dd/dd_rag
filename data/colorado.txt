@@ -1,0 +1,36 @@
+Investor: Hi! Heard interesting things about FlavorNet. Can you tell me what exactly you do?
+FlavorNet: Absolutely. We provide a real-time API that allows food and beverage brands to simulate, test, and optimize flavor profiles using AI.
+Investor: So your API helps R&D teams create better-tasting products?
+FlavorNet: Exactly. Think of it as a flavor modeling engine. You input your ingredient list or molecular data, and we simulate consumer flavor perception—sweetness, bitterness, umami balance, mouthfeel, etc.—before even running a lab test.
+Investor: How do you train an AI to “taste”?
+FlavorNet: Our core model is trained on over 1 million taste panel datasets, molecular interactions, sensory science publications, and 10,000+ flavor formulation logs. We use that to map chemical composition to predicted sensory outcomes.
+Investor: Do you require physical samples?
+FlavorNet: Not for simulation. But we integrate optional lab test inputs—like GC-MS results or Brix values—for even more accurate modeling when needed.
+Investor: What’s the typical use case?
+FlavorNet: Brands use us during early-stage product development or reformulation to hit target taste profiles—like making a reduced-sugar drink that still “feels” sweet or ensuring flavor consistency across seasonal ingredient variations.
+Investor: Do you work with specific types of F&B products?
+FlavorNet: Primarily beverages, dairy, snacks, and alt-protein. These categories rely heavily on precise taste balance and often need rapid iteration cycles.
+Investor: What about flavor masking or enhancer design?
+FlavorNet: Yes, our API supports both. It can suggest masking agents for off-notes in plant proteins or propose natural enhancers to boost flavor without increasing sodium or sugar.
+Investor: Sounds like something flavor houses would be interested in.
+FlavorNet: Absolutely. We already partner with two global flavor suppliers. They use our API to prototype faster and reduce sample production costs.
+Investor: What makes you different from traditional sensory labs?
+FlavorNet: Labs take weeks and are expensive. Our API delivers predictive taste profiles in minutes. Plus, it’s scalable—you can run 100 virtual tests in a day.
+Investor: What does your pricing look like?
+FlavorNet: Usage-based API pricing. $0.20 per simulation with volume discounts. Enterprise packages start at $30K/year, including flavor model tuning and support.
+Investor: Are you also building a UI?
+FlavorNet: Yes, a dashboard for non-technical users. Drag-and-drop ingredients, tweak ratios, and get a predicted taste map with benchmark comparisons.
+Investor: What’s your traction so far?
+FlavorNet: $1.1M ARR, 16 paying clients including 2 of the top 10 beverage brands. Over 70,000 flavor simulations run in the last 6 months.
+Investor: Who’s on your founding team?
+FlavorNet: Former food chemist from PepsiCo, ML engineer from DeepMind, and a computational neuroscientist specializing in olfactory systems.
+Investor: Impressive mix. What’s the roadmap?
+FlavorNet: We’re adding regional flavor preference modeling—so brands can simulate how a product would be perceived in India vs France vs Brazil.
+Investor: Do you integrate with formulation software?
+FlavorNet: Yes. Plug-ins for Ingredion, Benchling, and Flavor Studio. We aim to become the default taste simulation layer in the food tech stack.
+Investor: What’s the biggest challenge you’re solving?
+FlavorNet: Subjectivity. Taste is personal, but we're quantifying it with data. That gives brands a reproducible edge instead of relying purely on human intuition.
+Investor: Are you fundraising right now?
+FlavorNet: Yes. We’re raising a $6M Seed+ round to enhance multilingual taste datasets and expand our AI lab-to-market feedback loop.
+Investor: Fantastic. Looking forward to diving into your deck!
+FlavorNet: Thanks! Happy to walk you through the platform live as well.

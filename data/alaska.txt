@@ -1,0 +1,26 @@
+Investor: Hi, I’ve heard AquaTrace is solving QA issues in beverage manufacturing. Can you share more?
+AquaTrace: Yes, we're building a real-time quality assurance platform using IoT sensors and AI to monitor everything from water purity to packaging integrity in beverage plants.
+Investor: So you integrate into the production line?
+AquaTrace: Exactly. Our edge devices are installed at key checkpoints—filtration, flavor mixing, bottling. They collect chemical, visual, and environmental data. Our AI flags anomalies before batches are compromised.
+Investor: That sounds like a big cost saver.
+AquaTrace: Absolutely. Our clients have reduced QA failures by 38% and recall incidents by 60%. It’s especially valuable for brands producing high volumes.
+Investor: Who are your customers today?
+AquaTrace: We’re live in 12 manufacturing plants—working with juice, soda, and sparkling water producers in Southeast Asia and Europe.
+Investor: What about compliance standards?
+AquaTrace: We align with ISO 22000, HACCP, and FSMA. Our system auto-generates audit-ready logs, which has become a game-changer during inspections.
+Investor: What’s your business model?
+AquaTrace: SaaS plus hardware-as-a-service. Clients pay a monthly fee per production line and per sensor node. We also offer advanced analytics dashboards at a premium tier.
+Investor: What kind of sensors do you use?
+AquaTrace: Mix of proprietary optical and third-party chemical sensors. We fuse their output with AI models trained on beverage-specific QA data—like pH fluctuations, turbidity, or sealing consistency.
+Investor: How easy is implementation?
+AquaTrace: Install and calibrate in 2–3 days. Minimal downtime. We built it modular so clients can start small and scale.
+Investor: Any IP?
+AquaTrace: Yes, we hold two patents—one on real-time flavor deviation detection, another on predictive cleaning alerts to reduce biofilm buildup in pipelines.
+Investor: What’s the competition like?
+AquaTrace: Most players are either hardware-only or focus on post-production testing. We're unique in our continuous, inline, and AI-based quality assurance.
+Investor: What’s next for the roadmap?
+AquaTrace: We're developing a predictive SKU calibration tool—helping brands tweak flavor formulas based on raw water quality in different geographies.
+Investor: Very niche and powerful.
+AquaTrace: Exactly. Beverage companies want consistency, and we help them maintain it regardless of plant location or local input variations.
+Investor: Are you fundraising?
+AquaTrace: Yes, we’re planning a $7M raise to scale manufacturing partnerships and expand into North America.

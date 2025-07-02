@@ -62,6 +62,7 @@ class AdvancedConversationRetriever(BaseRetriever):
             # 3. Convert to nodes
             nodes = []
             for hit in results[0]:
+                print(f"Hit printing - {hit}")
                 nodes.append(NodeWithScore(
                     node=TextNode(
                         text=hit.entity.get("text"),

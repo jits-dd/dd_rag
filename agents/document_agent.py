@@ -34,18 +34,23 @@ class DocumentAgent:
             context = response.get("answer", "No answer found")
             sources = response.get("sources", [])
 
-            # Construct the new LLM prompt
-            prompt = f"""You are a helpful assistant answering questions strictly based on the provided context. 
-            Only answer if the context clearly answers the user's question. 
-            Do NOT make assumptions or hallucinate any facts. 
-            If the context is irrelevant, unclear, or incomplete, simply respond with: "No relevant answer found."
-            
-            Context:
-            {context}
-            
-            Question: {query}
-            
-            Answer:"""
+            prompt = f"""
+                You are a highly attentive and accurate assistant tasked with answering questions *strictly based* on the given context.
+                
+                Instructions:
+                - Carefully and thoroughly read the entire context before attempting to answer.
+                - Only answer if the context **directly and clearly** addresses the user's question.
+                - If the context does not provide a complete or unambiguous answer, respond with: "No relevant answer found."
+                - Do NOT infer, guess, paraphrase, or hallucinate information that is not explicitly present in the context.
+                - Stay factual, concise, and avoid elaborating beyond what the context provides.
+                
+                Context:
+                {context}
+                
+                Question: {query}
+                
+                Answer:
+                """
 
             # Generate refined response using LLM
             llm_response_obj = settings.llm.complete(prompt)

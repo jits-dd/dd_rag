@@ -26,8 +26,8 @@ class Settings:
     CONVERSATION_WINDOW = 4
 
     # Retrieval
-    RETRIEVAL_TOP_K = 5
-    RERANK_TOP_K = 3
+    RETRIEVAL_TOP_K = 20
+    RERANK_TOP_K = 20
 
     @property
     def embed_model(self):
